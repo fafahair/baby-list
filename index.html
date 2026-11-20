@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Малыш и Мама" />
+  <title>Малыш и Мама — Семейный органайзер</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      background-color: #F4F4F0;
+      color: #1C1C1A;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .widget-card {
+      background-color: #EAEAE3;
+      border-radius: 26px;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+    .widget-card-white {
+      background-color: #FFFFFF;
+      border-radius: 26px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#FCE96A]/40">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useMemo, useRef } = React;
+
+    const Icon = ({ name, className = "w-5 h-5" }) => {
+      const paths = {
+        dots: <><circle cx="7" cy="15" r="2.2" fill="currentColor"/><circle cx="7" cy="9" r="2.2" fill="currentColor"/><circle cx="13" cy="15" r="2.2" fill="currentColor"/><circle cx="17" cy="11" r="4" stroke="currentColor" strokeWidth="2.4" fill="none"/></>,
+        check: <><path d="M20 6 9 17l-5-5"/></>,
+        checkCircle: <><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></>,
+        circle: <><circle cx="12" cy="12" r="10"/></>,
+        shirt: <><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></>,
+        gift: <><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></>,
+        user: <><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></>,
+        plus: <><path d="M5 12h14"/><path d="M12 5v14"/></>,
+        search: <><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></>,
+        link: <><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></>,
+        trash: <><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></>,
+        copy: <><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></>,
+        upload: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></>,
+        cloud: <><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></>,
+        x: <><path d="M18 6 6 18"/><path d="m6 6 12 12"/></>
+      };
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          {paths[name]}
+        </svg>
+      );
+    };
+
+    const INITIAL_DATA = {"profile": {"momName": "Ада", "partnerName": "Давид", "babyName": "Лев / Сева", "dueDate": "2026-12-15", "country": "Швейцария", "city": "Цюрих"}, "checklist": [{"id": "d1", "section": "Документы", "category": "Документы", "name": "Список важных телефонов", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "Лежит у меня под монитором", "notes": "Акушерка, педиатр, гинеколог, служба экстренной помощи", "qty": "1 памятка"}, {"id": "d2", "section": "Документы", "category": "Документы", "name": "Свидетельство рождения Ада", "importance": "Важно", "status": "Начато", "who": "Ада", "link": "оригинальная инфа в тг в закрепе", "notes": "Выдано 22.10, апостиль делает Глеб", "qty": "1 шт."}, {"id": "d3", "section": "Документы", "category": "Документы", "name": "Свидетельство рождения Давид", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "оригинальная инфа в тг в закрепе", "notes": "надо чтобы был не позднее моего на 6 мес", "qty": "1 шт."}, {"id": "d4", "section": "Документы", "category": "Документы", "name": "Свидетельство брака", "importance": "Важно", "status": "Сделано", "who": "", "link": "оригинальная инфа в тг в закрепе", "notes": "Вроде то что есть у нас соответствует требованиям", "qty": "1 шт."}, {"id": "d5", "section": "Документы", "category": "Документы", "name": "Давид прививка от коклюша", "importance": "Важно", "status": "Сделано", "who": "Давид", "link": "", "notes": "Осталось только подписать паспорт медицинский", "qty": ""}, {"id": "d6", "section": "Документы", "category": "Документы", "name": "Страховка (Helsana)", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "https://portal.helsana.ch/beratung/session/b861ae87-a852-4720-a00d-67f9d5e84346/vorschau", "notes": "Сначала посмотреть онлайн через твой личный кабинет, можно ли оформить без имени", "qty": ""}, {"id": "d7", "section": "Документы", "category": "Документы", "name": "Выбрать имя", "importance": "Важно", "status": "Начато", "who": "", "link": "", "notes": "Мои варианты: Лев, Сева", "qty": ""}, {"id": "d8", "section": "Документы", "category": "Документы", "name": "Определиться с национальностью ребенка", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": ""}, {"id": "d9", "section": "Документы", "category": "Документы", "name": "Решить что там с Ирландским паспортом", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": ""}, {"id": "d10", "section": "Документы", "category": "Документы", "name": "Поиск педиатра", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "h1", "section": "Подготовить в доме", "category": "Спальня", "name": "Купить кровать", "importance": "Важно", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": ""}, {"id": "h2", "section": "Подготовить в доме", "category": "Спальня", "name": "Комплект белого постельного белья (IKEA)", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/nattjasmin-duvet-cover-and-pillowcase-white-00337177/", "notes": "NATTJASMIN 1 шт + zara", "qty": "1 шт"}, {"id": "h3", "section": "Подготовить в доме", "category": "Спальня", "name": "Новые подушки и матрас", "importance": "Важно", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": ""}, {"id": "h4", "section": "Подготовить в доме", "category": "Спальня", "name": "Простыни 2 шт (NORDRUTA)", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/nordruta-fitted-sheet-white-40381795/", "notes": "NATTJASMIN, NORDRUTA 2pc", "qty": "2 шт"}, {"id": "h5", "section": "Подготовить в доме", "category": "Спальня", "name": "Накидка от протекания (ÄNGSKORN)", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/aengskorn-mattress-protector-20461991/", "notes": "", "qty": ""}, {"id": "h6", "section": "Подготовить в доме", "category": "Спальня", "name": "Шкаф в угол", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/lastare-frame-with-doors-white-70596469/#content", "notes": "ширина 40–60 см, глубина 62 см", "qty": ""}, {"id": "h7", "section": "Подготовить в доме", "category": "Спальня", "name": "Перебрать аптечку и выделить место для ребенка", "importance": "По желанию", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": ""}, {"id": "h8", "section": "Подготовить в доме", "category": "Спальня", "name": "Перестановка в спальне и сборка новой кровати", "importance": "Важно", "status": "Сделано", "who": "Давид", "link": "", "notes": "Передвинуть комод, шкаф, убрать старую кровать", "qty": ""}, {"id": "h9", "section": "Подготовить в доме", "category": "Спальня", "name": "Поменять мне прикроватный столик", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "h10", "section": "Подготовить в доме", "category": "Весь дом", "name": "Наладить клининг", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "h11", "section": "Подготовить в доме", "category": "Весь дом", "name": "Робот-пылесос", "importance": "По желанию", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": ""}, {"id": "h12", "section": "Подготовить в доме", "category": "Кухня", "name": "Освободить морозилку и сделать заморозки", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "Разморозить, почистить, заготовить полуфабрикаты", "qty": ""}, {"id": "h13", "section": "Подготовить в доме", "category": "Кухня", "name": "Составить меню что можно/нельзя есть мне", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "h14", "section": "Подготовить в доме", "category": "Ванная", "name": "Шкаф BILLY / OXBERG, стойка и корзинка в ванной", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/billy-oxberg-bookcase-with-panel-glass-door-white-glass-s39287421/", "notes": "40x30x202 cm", "qty": ""}, {"id": "b1", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Шапочка или чепчик по сезону", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Seasonal baby bonnet", "qty": "1 шт."}, {"id": "b2", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Тонкая хлопковая шапка-чепчик", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "1 шт."}, {"id": "b3", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Теплые носки", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "2 пары"}, {"id": "b4", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Теплый кокон для сна или коляски (Woolville)", "importance": "Важно", "status": "В планах", "who": "", "link": "https://www.woolville.ch/kinderfu-sack-mit-merinowolle-schwarz_z5371/", "notes": "Дадут (мериносовая шерсть)", "qty": "1 шт."}, {"id": "b5", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Комбинезон теплый (Disana или Engel)", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Merino wool snowsuit", "qty": "1 шт."}, {"id": "b6", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Хлопковые слипы на молнии", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "С антицарапками, с пятками", "qty": "2-4 шт"}, {"id": "b7", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Боди с длинным рукавом", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Докупить 1-2 шт кимоно с запахом р. 60", "qty": "5-7 шт."}, {"id": "b8", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Штанишки или легинсы", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "4-5 шт."}, {"id": "b9", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Носки или пинетки", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "1-2 пары"}, {"id": "b10", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Лонгсливы и кофточки / кардиганы", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "4-6 шт."}, {"id": "b11", "section": "Малыш: одежда и уход", "category": "Одежда", "name": "Тёплые варежки и антицарапки", "importance": "После родов", "status": "Куплено", "who": "Ада", "link": "", "notes": "Комбез с манжетами + антицарапки", "qty": "1 шт."}, {"id": "b12", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Подгузники 1 и 2 размера (Moony / Merries / Goon)", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "2 уп."}, {"id": "b13", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Хлопковые и муслиновые пелёнки (Nuscheli)", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "Несколько шт."}, {"id": "b14", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Мягкие мочалки (baby sponge)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "см на распродаже", "qty": "1 компл."}, {"id": "b15", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Влажные салфетки и впитывающие пелёнки", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "2 уп."}, {"id": "b16", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Мусорка для подгузников", "importance": "По желанию", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}, {"id": "b17", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Нейтральное масло и крем Bepanthen", "importance": "После родов", "status": "В планах", "who": "Ада", "link": "", "notes": "При необходимости", "qty": "1 компл."}, {"id": "b18", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Цифровой термометр", "importance": "Важно", "status": "Куплено", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}, {"id": "b19", "section": "Малыш: одежда и уход", "category": "Гигиена", "name": "Детские ножницы, ванночка, физраствор", "importance": "После родов", "status": "В планах", "who": "Ада", "link": "", "notes": "Ванночку дадут", "qty": "1 компл."}, {"id": "m1", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Вкладыши для бюстгальтера и крем Purelan", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Шерсть/шёлк + ланолин", "qty": "1 компл."}, {"id": "m2", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Молокоотсос, бутылочки, бельё и подушка для кормления", "importance": "По желанию", "status": "Потом", "who": "Ада", "link": "", "notes": "По необходимости", "qty": "1 компл."}, {"id": "m3", "section": "Для мамы: ГВ и гигиена", "category": "После родов", "name": "Послеродовые прокладки, высокое бельё, пери-бутылочка", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "1 компл."}, {"id": "m4", "section": "Для мамы: ГВ и гигиена", "category": "После родов", "name": "Охлаждающие компрессы и набор после кесарева", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "1 набор"}, {"id": "r1", "section": "Сумка в роддом", "category": "Документы", "name": "Карта Helsana, паспорта, Ausländerausweis, Mutterschaftspass", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Плюс документы для Zivilstandsamt (апостиль)", "qty": "1 папка"}, {"id": "r2", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Рубашка для родов, тёплые носки, сланцы, компрессионные чулки", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 компл."}, {"id": "r3", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Бальзам для губ, термальная вода, резинки для волос", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 набор"}, {"id": "r4", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Снеки, вода, зарядка 3м, пауэрбанк, одежда для Давида", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 компл."}, {"id": "r5", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Пижамы и топы для кормления, халат, высокие трусики, угги", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "2-3 компл."}, {"id": "r6", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Косметичка, Hametum, Purelan, витамины, беруши и маска для сна", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 набор"}, {"id": "o1", "section": "Выписка из роддома", "category": "Для малыша", "name": "Боди-кимоно р.56 + слип р.56 + носочки + комбез меринос р.56-62", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Многослойный зимний комплект", "qty": "1 компл."}, {"id": "o2", "section": "Выписка из роддома", "category": "Для малыша", "name": "Тёплая шапочка + подшлемник + автолюлька с зимним конвертом", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "Без автокресла из клиники не выпишут", "qty": "1 компл."}, {"id": "o3", "section": "Выписка из роддома", "category": "Для мамы и доки", "name": "Одежда для мамы, предупредить Hebamme, забрать Gesundheitsheft", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Выкупить рецепты (витамин D, железо) в аптеке госпиталя", "qty": "1 компл."}], "wardrobe": [{"id": "w1", "category": "Боди с длинным рукавом (кимоно)", "sizes": {"50": {"have": 2, "need": 3}, "56": {"have": 5, "need": 6}, "62": {"have": 4, "need": 6}, "68": {"have": 1, "need": 6}, "74": {"have": 0, "need": 5}, "80": {"have": 0, "need": 5}}}, {"id": "w2", "category": "Хлопковые слипы (человечки)", "sizes": {"50": {"have": 2, "need": 3}, "56": {"have": 4, "need": 5}, "62": {"have": 3, "need": 5}, "68": {"have": 0, "need": 5}, "74": {"have": 0, "need": 4}, "80": {"have": 0, "need": 4}}}, {"id": "w3", "category": "Штанишки / леггинсы", "sizes": {"50": {"have": 1, "need": 2}, "56": {"have": 4, "need": 4}, "62": {"have": 3, "need": 4}, "68": {"have": 0, "need": 5}, "74": {"have": 0, "need": 5}, "80": {"have": 0, "need": 5}}}, {"id": "w4", "category": "Лонгсливы / кофточки", "sizes": {"50": {"have": 0, "need": 1}, "56": {"have": 2, "need": 3}, "62": {"have": 2, "need": 3}, "68": {"have": 0, "need": 4}, "74": {"have": 0, "need": 4}, "80": {"have": 0, "need": 4}}}, {"id": "w5", "category": "Теплый комбинезон (меринос / флис)", "sizes": {"50": {"have": 0, "need": 0}, "56": {"have": 1, "need": 1}, "62": {"have": 1, "need": 1}, "68": {"have": 0, "need": 1}, "74": {"have": 0, "need": 0}, "80": {"have": 0, "need": 0}}}, {"id": "w6", "category": "Шапочки / чепчики", "sizes": {"50": {"have": 1, "need": 1}, "56": {"have": 2, "need": 2}, "62": {"have": 1, "need": 2}, "68": {"have": 0, "need": 2}, "74": {"have": 0, "need": 2}, "80": {"have": 0, "need": 2}}}, {"id": "w7", "category": "Носочки / пинетки (пар)", "sizes": {"50": {"have": 2, "need": 2}, "56": {"have": 3, "need": 3}, "62": {"have": 2, "need": 3}, "68": {"have": 0, "need": 4}, "74": {"have": 0, "need": 4}, "80": {"have": 0, "need": 4}}}], "wishlists": [{"id": "wl1", "title": "Baby Shower & Выписка", "description": "Подарки на первые месяцы жизни", "items": [{"id": "wi1", "name": "Теплый конверт из мериноса (Woolville)", "price": "120 CHF", "link": "https://www.woolville.ch/kinderfu-sack-mit-merinowolle-schwarz_z5371/", "status": "Забронировано", "reservedBy": "Бабушка", "notes": "Черный или графит"}, {"id": "wi2", "name": "Шерстяной комбинезон Disana / Engel (р. 62/68)", "price": "85 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "Валяная шерсть мериноса"}, {"id": "wi3", "name": "Муслиновые пеленки (Nuscheli) 120×120", "price": "35 CHF", "link": "", "status": "Подарено", "reservedBy": "Подруга", "notes": "Органический хлопок"}, {"id": "wi4", "name": "Боди-кимоно с запахом (размер 62)", "price": "25 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "1-2 шт. с антицарапками"}, {"id": "wi5", "name": "Подушка для кормления", "price": "65 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "Со съемным чехлом"}]}, {"id": "wl2", "title": "На вырост (3–9 мес.)", "description": "Вещи на весну и лето", "items": [{"id": "wi6", "name": "Боди и слипы размера 68 и 74", "price": "30 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "Легкий хлопок на весну"}, {"id": "wi7", "name": "Развивающий коврик с дугами", "price": "70 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "В спокойных тонах"}]}]};
+
+    // Бесплатное облачное хранилище (JSONBlob API) для автоматической синхронизации между iPhone/iPad
+    const CLOUD_API = "https://jsonblob.com/api/jsonBlob";
+
+    const SECTIONS = ["Все", "Сумка в роддом", "Выписка из роддома", "Малыш: одежда и уход", "Для мамы: ГВ и гигиена", "Документы", "Подготовить в доме"];
+    const SIZES = ["50", "56", "62", "68", "74", "80"];
+
+    const SECTION_STYLES = {
+      "Сумка в роддом": "bg-[#E2D6F9] text-[#1E1A26]",
+      "Выписка из роддома": "bg-[#EDF5A6] text-[#232614]",
+      "Малыш: одежда и уход": "bg-[#DCE6F9] text-[#182030]",
+      "Для мамы: ГВ и гигиена": "bg-[#F7DFD4] text-[#2B1D17]",
+      "Документы": "bg-[#EAEAE3] text-[#1C1C1A]",
+      "Подготовить в доме": "bg-[#E3EDE4] text-[#19261B]"
+    };
+
+    function getSeasonInfo(dateStr) {
+      if (!dateStr) return { name: "Зима", advice: "Многослойность: х/б слип + шерсть мериноса + теплый конверт." };
+      const month = new Date(dateStr).getMonth() + 1;
+      if (month === 12 || month === 1 || month === 2) {
+        return { name: "Зима", advice: "Нужен слой из мериноса/флиса, теплая шапочка на завязках и зимний конверт в автолюльку." };
+      } else if (month >= 3 && month <= 5) {
+        return { name: "Весна", advice: "Переменчивая погода: демисезонный комбинезон, хлопковые шапочки разной плотности и плед." };
+      } else if (month >= 6 && month <= 8) {
+        return { name: "Лето", advice: "Дышащий муслин, тонкий хлопок, боди с коротким рукавом и панамка." };
+      } else {
+        return { name: "Осень", advice: "Многослойность: боди с длинным рукавом, флисовый комбинезон и защита от ветра." };
+      }
+    }
+
+    function getSizeSeasonLabel(dueDateStr, size) {
+      if (!dueDateStr) return "";
+      const offsets = { "50": 0, "56": 0, "62": 2, "68": 4, "74": 7, "80": 10 };
+      const d = new Date(dueDateStr);
+      d.setMonth(d.getMonth() + (offsets[size] || 0));
+      const m = d.getMonth() + 1;
+      if (m === 12 || m === 1 || m === 2) return "Зима";
+      if (m >= 3 && m <= 5) return "Весна";
+      if (m >= 6 && m <= 8) return "Лето";
+      return "Осень";
+    }
+
+    function App() {
+      const [activeTab, setActiveTab] = useState("checklist");
+      const [data, setData] = useState(() => {
+        try {
+          const saved = localStorage.getItem("family_baby_minimal_v4");
+          return saved ? JSON.parse(saved) : INITIAL_DATA;
+        } catch (e) { return INITIAL_DATA; }
+      });
+
+      const [roomId, setRoomId] = useState(() => {
+        const hash = window.location.hash.replace("#room=", "").trim();
+        if (hash) {
+          localStorage.setItem("family_sync_room_id", hash);
+          return hash;
+        }
+        return localStorage.getItem("family_sync_room_id") || "";
+      });
+
+      const [syncStatus, setSyncStatus] = useState("local");
+      const [joinInput, setJoinInput] = useState("");
+      const isRemoteUpdate = useRef(false);
+      const lastUpdatedRef = useRef(0);
+
+      useEffect(() => {
+        let interval;
+        const initCloud = async () => {
+          if (!roomId) {
+            try {
+              setSyncStatus("syncing");
+              const res = await fetch(CLOUD_API, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify({ ...data, _updatedAt: Date.now() })
+              });
+              const loc = res.headers.get("Location") || res.headers.get("X-jsonblob");
+              if (loc) {
+                const newId = loc.split("/").pop();
+                setRoomId(newId);
+                localStorage.setItem("family_sync_room_id", newId);
+                window.history.replaceState(null, "", "#room=" + newId);
+                setSyncStatus("synced");
+              }
+            } catch (e) {
+              setSyncStatus("local");
+            }
+          } else {
+            fetchFromCloud(roomId);
+          }
+        };
+
+        initCloud();
+
+        interval = setInterval(() => {
+          const currentId = localStorage.getItem("family_sync_room_id");
+          if (currentId) fetchFromCloud(currentId);
+        }, 4000);
+
+        return () => clearInterval(interval);
+      }, [roomId]);
+
+      const fetchFromCloud = async (id) => {
+        try {
+          const res = await fetch(`${CLOUD_API}/${id}`, { headers: { "Accept": "application/json" } });
+          if (!res.ok) return;
+          const remoteData = await res.json();
+          if (remoteData && remoteData.checklist && (!remoteData._updatedAt || remoteData._updatedAt > lastUpdatedRef.current)) {
+            isRemoteUpdate.current = true;
+            lastUpdatedRef.current = remoteData._updatedAt || Date.now();
+            setData(remoteData);
+            localStorage.setItem("family_baby_minimal_v4", JSON.stringify(remoteData));
+            setSyncStatus("synced");
+          }
+        } catch (e) {}
+      };
+
+      useEffect(() => {
+        try {
+          localStorage.setItem("family_baby_minimal_v4", JSON.stringify(data));
+        } catch (e) {}
+
+        if (isRemoteUpdate.current) {
+          isRemoteUpdate.current = false;
+          return;
+        }
+
+        const currentId = localStorage.getItem("family_sync_room_id");
+        if (currentId) {
+          const now = Date.now();
+          lastUpdatedRef.current = now;
+          setSyncStatus("syncing");
+          fetch(`${CLOUD_API}/${currentId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({ ...data, _updatedAt: now })
+          })
+            .then(() => setSyncStatus("synced"))
+            .catch(() => setSyncStatus("error"));
+        }
+      }, [data]);
+
+      const [selectedSection, setSelectedSection] = useState("Все");
+      const [filterWho, setFilterWho] = useState("Все");
+      const [filterStatus, setFilterStatus] = useState("Все");
+      const [searchQuery, setSearchQuery] = useState("");
+      const [showAddModal, setShowAddModal] = useState(false);
+
+      const [newItem, setNewItem] = useState({
+        section: "Малыш: одежда и уход",
+        category: "Покупки",
+        name: "",
+        importance: "Важно",
+        status: "В планах",
+        who: "Ада",
+        qty: "1 шт.",
+        notes: "",
+        link: ""
+      });
+
+      const [activeWishlistId, setActiveWishlistId] = useState(data.wishlists[0]?.id || "wl1");
+      const [showImportModal, setShowImportModal] = useState(false);
+      const [importText, setImportText] = useState("");
+      const [newWishName, setNewWishName] = useState("");
+      const [newWishPrice, setNewWishPrice] = useState("");
+      const [newWishNotes, setNewWishNotes] = useState("");
+      const [toast, setToast] = useState("");
+
+      const notify = (msg) => {
+        setToast(msg);
+        setTimeout(() => setToast(""), 3000);
+      };
+
+      const seasonInfo = useMemo(() => getSeasonInfo(data.profile.dueDate), [data.profile.dueDate]);
+
+      const daysUntilDue = useMemo(() => {
+        if (!data.profile.dueDate) return null;
+        const diff = new Date(data.profile.dueDate) - new Date();
+        return Math.ceil(diff / (1000 * 60 * 60 * 24));
+      }, [data.profile.dueDate]);
+
+      const stats = useMemo(() => {
+        const relevant = data.checklist.filter(i => i.status !== "Не нужно");
+        const done = relevant.filter(i => i.status === "Куплено" || i.status === "Сделано").length;
+        const pct = relevant.length ? Math.round((done / relevant.length) * 100) : 0;
+        return { total: relevant.length, done, pct };
+      }, [data.checklist]);
+
+      const filteredChecklist = useMemo(() => {
+        return data.checklist.filter(item => {
+          if (selectedSection !== "Все" && item.section !== selectedSection) return false;
+          if (filterWho !== "Все" && (item.who || "Общее") !== filterWho) return false;
+          if (filterStatus === "Осталось" && (item.status === "Куплено" || item.status === "Сделано" || item.status === "Не нужно")) return false;
+          if (filterStatus === "Готово" && item.status !== "Куплено" && item.status !== "Сделано") return false;
+          if (searchQuery.trim()) {
+            const q = searchQuery.toLowerCase();
+            if (!item.name.toLowerCase().includes(q) && !(item.notes || "").toLowerCase().includes(q)) return false;
+          }
+          return true;
+        });
+      }, [data.checklist, selectedSection, filterWho, filterStatus, searchQuery]);
+
+      const toggleItemDone = (id) => {
+        setData(prev => ({
+          ...prev,
+          checklist: prev.checklist.map(item => {
+            if (item.id !== id) return item;
+            const isDone = item.status === "Куплено" || item.status === "Сделано";
+            const nextStatus = isDone ? "В планах" : (item.section === "Документы" || item.section === "Подготовить в доме" ? "Сделано" : "Куплено");
+            return { ...item, status: nextStatus };
+          })
+        }));
+      };
+
+      const deleteChecklistItem = (id) => {
+        setData(prev => ({ ...prev, checklist: prev.checklist.filter(item => item.id !== id) }));
+        notify("Удалено");
+      };
+
+      const handleAddChecklistItem = (e) => {
+        e.preventDefault();
+        if (!newItem.name.trim()) return;
+        setData(prev => ({ ...prev, checklist: [{ ...newItem, id: "c_" + Date.now() }, ...prev.checklist] }));
+        setNewItem({ ...newItem, name: "", notes: "", link: "" });
+        setShowAddModal(false);
+        notify("Добавлено и синхронизировано");
+      };
+
+      const updateWardrobeCount = (rowId, size, field, delta) => {
+        setData(prev => ({
+          ...prev,
+          wardrobe: prev.wardrobe.map(row => {
+            if (row.id !== rowId) return row;
+            const current = row.sizes[size] || { have: 0, need: 0 };
+            return {
+              ...row,
+              sizes: { ...row.sizes, [size]: { ...current, [field]: Math.max(0, current[field] + delta) } }
+            };
+          })
+        }));
+      };
+
+      const wardrobeShortages = useMemo(() => {
+        const list = [];
+        data.wardrobe.forEach(row => {
+          SIZES.forEach(sz => {
+            const cell = row.sizes[sz];
+            if (cell && cell.need > cell.have) {
+              list.push({
+                id: `${row.id}_${sz}`,
+                category: row.category,
+                size: sz,
+                missing: cell.need - cell.have,
+                season: getSizeSeasonLabel(data.profile.dueDate, sz)
+              });
+            }
+          });
+        });
+        return list;
+      }, [data.wardrobe, data.profile.dueDate]);
+
+      const sendShortageToWishlist = (item) => {
+        setData(prev => ({
+          ...prev,
+          wishlists: prev.wishlists.map((wl, idx) => idx !== 0 ? wl : {
+            ...wl,
+            items: [...wl.items, {
+              id: "wi_" + Date.now() + Math.random(),
+              name: `${item.category} — р. ${item.size} (${item.missing} шт.)`,
+              price: "",
+              link: "",
+              status: "Свободно",
+              reservedBy: "",
+              notes: `Сезон: ${item.season}`
+            }]
+          })
+        }));
+        notify(`Добавлено в вишлист: ${item.category}`);
+      };
+
+      const activeWishlist = useMemo(() => data.wishlists.find(w => w.id === activeWishlistId) || data.wishlists[0], [data.wishlists, activeWishlistId]);
+
+      const addWishlistItem = (e) => {
+        e.preventDefault();
+        if (!newWishName.trim() || !activeWishlist) return;
+        setData(prev => ({
+          ...prev,
+          wishlists: prev.wishlists.map(wl => wl.id === activeWishlist.id ? {
+            ...wl,
+            items: [...wl.items, {
+              id: "wi_" + Date.now(),
+              name: newWishName.trim(),
+              price: newWishPrice.trim(),
+              link: "",
+              status: "Свободно",
+              reservedBy: "",
+              notes: newWishNotes.trim()
+            }]
+          } : wl)
+        }));
+        setNewWishName("");
+        setNewWishPrice("");
+        setNewWishNotes("");
+        notify("Подарок добавлен");
+      };
+
+      const cycleWishStatus = (itemId) => {
+        const order = ["Свободно", "Забронировано", "Подарено"];
+        setData(prev => ({
+          ...prev,
+          wishlists: prev.wishlists.map(wl => wl.id === activeWishlist.id ? {
+            ...wl,
+            items: wl.items.map(it => it.id !== itemId ? it : { ...it, status: order[(order.indexOf(it.status) + 1) % order.length] })
+          } : wl)
+        }));
+      };
+
+      const copyWishlistForFriends = () => {
+        if (!activeWishlist) return;
+        const lines = [`🎁 Вишлист (${data.profile.babyName}): ${activeWishlist.title}`, ""];
+        activeWishlist.items.forEach((it, idx) => {
+          const mark = it.status === "Свободно" ? "○" : (it.status === "Забронировано" ? "◐ [Бронь]" : "● [Подарено]");
+          lines.push(`${idx + 1}. ${mark} ${it.name}${it.price ? ` (${it.price})` : ""}`);
+        });
+        navigator.clipboard?.writeText(lines.join("\n"));
+        notify("Вишлист скопирован для отправки");
+      };
+
+      const handleImportWishlist = () => {
+        if (!importText.trim()) return;
+        const lines = importText.split("\n").map(l => l.trim()).filter(Boolean);
+        const importedItems = lines.map((line, i) => ({
+          id: "imp_" + Date.now() + "_" + i,
+          name: line.replace(/^[-*•\d.)]+\s*/, ""),
+          price: "",
+          link: "",
+          status: "Свободно",
+          reservedBy: "",
+          notes: ""
+        }));
+        setData(prev => ({
+          ...prev,
+          wishlists: prev.wishlists.map(wl => wl.id === activeWishlist.id ? { ...wl, items: [...wl.items, ...importedItems] } : wl)
+        }));
+        setImportText("");
+        setShowImportModal(false);
+        notify(`Добавлено подарков: ${importedItems.length}`);
+      };
+
+      const copyInviteLinkForHusband = () => {
+        const baseUrl = window.location.href.split("#")[0];
+        const inviteUrl = roomId ? `${baseUrl}#room=${roomId}` : baseUrl;
+        navigator.clipboard?.writeText(inviteUrl);
+        notify("Ссылка для мужа скопирована! Отправьте её Давиду");
+      };
+
+      const connectToRoom = () => {
+        const cleanId = joinInput.includes("#room=") ? joinInput.split("#room=")[1].trim() : joinInput.trim();
+        if (!cleanId) return;
+        localStorage.setItem("family_sync_room_id", cleanId);
+        setRoomId(cleanId);
+        window.history.replaceState(null, "", "#room=" + cleanId);
+        fetchFromCloud(cleanId);
+        setJoinInput("");
+        notify("Подключено к общей комнате семьи!");
+      };
+
+      return (
+        <div className="min-h-screen pb-28 max-w-2xl mx-auto px-4 pt-5">
+          {toast && (
+            <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#1C1C1A] text-[#F4F4F0] text-xs font-medium px-4 py-2.5 rounded-full shadow-lg">
+              {toast}
+            </div>
+          )}
+
+          <header className="mb-5">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2 text-[#1C1C1A]">
+                <Icon name="dots" className="w-7 h-7" />
+                <span className="text-xs font-medium text-[#75756E] tracking-tight">
+                  {data.profile.momName} & {data.profile.partnerName}
+                </span>
+              </div>
+
+              <button
+                onClick={copyInviteLinkForHusband}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EAEAE3] text-[11px] font-medium text-[#1C1C1A] active:scale-95 transition"
+              >
+                <span className={`w-2 h-2 rounded-full ${syncStatus === "synced" ? "bg-emerald-500" : syncStatus === "syncing" ? "bg-amber-400 animate-pulse" : "bg-stone-400"}`} />
+                <span>{syncStatus === "synced" ? "Синхронизировано" : "Облако"}</span>
+                <Icon name="copy" className="w-3 h-3 ml-0.5 text-[#75756E]" />
+              </button>
+            </div>
+
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="text-xs text-[#75756E] mb-0.5">
+                  {data.profile.city} • {seasonInfo.name} {daysUntilDue > 0 ? `• ~${daysUntilDue} дн. до ПДР` : ""}
+                </p>
+                <h1 className="text-3xl font-normal tracking-tight text-[#1C1C1A]">
+                  {activeTab === "checklist" && "Списки"}
+                  {activeTab === "wardrobe" && "Гардероб"}
+                  {activeTab === "wishlists" && "Вишлист"}
+                  {activeTab === "profile" && "Семья"}
+                </h1>
+              </div>
+
+              <div className="widget-card px-4 py-3 flex items-center gap-3">
+                <div>
+                  <div className="text-[10px] text-[#75756E]">Готовность</div>
+                  <div className="text-2xl font-normal tracking-tight leading-none mt-0.5">
+                    {stats.pct}<span className="text-xs align-top ml-0.5">%</span>
+                  </div>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-[#FCE96A] shrink-0" />
+              </div>
+            </div>
+          </header>
+
+          {activeTab === "checklist" && (
+            <div className="space-y-3.5">
+              <div className="flex gap-2">
+                <div className="relative flex-1">
+                  <Icon name="search" className="w-4 h-4 text-[#75756E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Поиск по вещам и документам..."
+                    className="w-full pl-10 pr-4 py-3 bg-[#EAEAE3] rounded-2xl text-xs placeholder-[#75756E] focus:outline-none"
+                  />
+                </div>
+                <button
+                  onClick={() => setShowAddModal(true)}
+                  className="w-11 h-11 rounded-2xl bg-[#1C1C1A] text-white flex items-center justify-center shrink-0 active:scale-95 transition"
+                >
+                  <Icon name="plus" className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="flex gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                {SECTIONS.map(sec => (
+                  <button
+                    key={sec}
+                    onClick={() => setSelectedSection(sec)}
+                    className={`px-3.5 py-2 rounded-full text-xs whitespace-nowrap transition ${
+                      selectedSection === sec
+                        ? "bg-[#1C1C1A] text-white font-medium"
+                        : "bg-[#EAEAE3] text-[#5C5C56]"
+                    }`}
+                  >
+                    {sec}
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex items-center justify-between gap-2 text-[11px]">
+                <div className="flex gap-1 bg-[#EAEAE3] p-1 rounded-full">
+                  {["Все", "Осталось", "Готово"].map(st => (
+                    <button
+                      key={st}
+                      onClick={() => setFilterStatus(st)}
+                      className={`px-3 py-1 rounded-full transition ${
+                        filterStatus === st ? "bg-white text-[#1C1C1A] font-medium shadow-xs" : "text-[#75756E]"
+                      }`}
+                    >
+                      {st}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex gap-1 bg-[#EAEAE3] p-1 rounded-full">
+                  {["Все", data.profile.momName || "Ада", data.profile.partnerName || "Давид"].map(who => (
+                    <button
+                      key={who}
+                      onClick={() => setFilterWho(who)}
+                      className={`px-3 py-1 rounded-full transition ${
+                        filterWho === who ? "bg-white text-[#1C1C1A] font-medium shadow-xs" : "text-[#75756E]"
+                      }`}
+                    >
+                      {who}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-2.5 pt-1">
+                {filteredChecklist.map(item => {
+                  const isDone = item.status === "Куплено" || item.status === "Сделано";
+                  const cardTint = isDone ? "bg-[#EAEAE3]/60 opacity-75" : (SECTION_STYLES[item.section] || "bg-[#EAEAE3]");
+                  const isUrl = item.link && item.link.startsWith("http");
+
+                  return (
+                    <div
+                      key={item.id}
+                      onClick={() => toggleItemDone(item.id)}
+                      className={`${cardTint} rounded-[26px] p-4 cursor-pointer active:scale-[0.99] transition`}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 text-[11px] opacity-65 mb-1">
+                            <span>{item.section}</span>
+                            {item.who && <span>• {item.who}</span>}
+                            {item.qty && <span>• {item.qty}</span>}
+                          </div>
+
+                          <h3 className={`text-[15px] font-medium leading-snug ${isDone ? "line-through opacity-60" : ""}`}>
+                            {item.name}
+                          </h3>
+
+                          {item.notes && (
+                            <p className="text-xs opacity-70 mt-1 leading-relaxed">{item.notes}</p>
+                          )}
+
+                          {item.link && (
+                            <div className="mt-2" onClick={(e) => e.stopPropagation()}>
+                              {isUrl ? (
+                                <a
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-xs font-medium underline opacity-80"
+                                >
+                                  <Icon name="link" className="w-3.5 h-3.5" />
+                                  <span>Открыть ссылку</span>
+                                </a>
+                              ) : (
+                                <span className="text-[11px] opacity-60">Где: {item.link}</span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="flex flex-col items-end gap-3 shrink-0">
+                          <div className={`w-11 h-6 rounded-full p-1 transition-colors flex items-center ${isDone ? "bg-[#1C1C1A] justify-end" : "bg-white/80 justify-start"}`}>
+                            <div className={`w-4 h-4 rounded-full ${isDone ? "bg-[#FCE96A]" : "bg-[#1C1C1A]/30"}`} />
+                          </div>
+
+                          <button
+                            onClick={(e) => { e.stopPropagation(); deleteChecklistItem(item.id); }}
+                            className="opacity-35 hover:opacity-80 p-1"
+                          >
+                            <Icon name="trash" className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {activeTab === "wardrobe" && (
+            <div className="space-y-4">
+              <div className="widget-card p-4">
+                <div className="text-xs text-[#75756E] mb-3">
+                  Нажимайте + или −, чтобы обновлять наличие. Сезон под каждой колонкой рассчитан от вашего ПДР.
+                </div>
+
+                <div className="overflow-x-auto -mx-4 px-4">
+                  <table className="w-full text-left border-collapse min-w-[580px]">
+                    <thead>
+                      <tr className="text-[11px] text-[#75756E] border-b border-black/5">
+                        <th className="py-2 pr-3 font-medium">Вещь</th>
+                        {SIZES.map(sz => (
+                          <th key={sz} className="py-2 px-1 text-center font-medium">
+                            <div className="text-xs text-[#1C1C1A] font-semibold">р. {sz}</div>
+                            <div className="text-[10px] opacity-70">{getSizeSeasonLabel(data.profile.dueDate, sz)}</div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-black/5 text-xs">
+                      {data.wardrobe.map(row => (
+                        <tr key={row.id}>
+                          <td className="py-3 pr-3 font-medium">{row.category}</td>
+                          {SIZES.map(sz => {
+                            const cell = row.sizes[sz] || { have: 0, need: 0 };
+                            const complete = cell.need > 0 && cell.have >= cell.need;
+                            return (
+                              <td key={sz} className="py-2 px-1 text-center">
+                                <div className={`rounded-2xl p-1.5 ${complete ? "bg-[#EDF5A6]" : "bg-white/80"}`}>
+                                  <div className="flex items-center justify-center gap-1">
+                                    <button onClick={() => updateWardrobeCount(row.id, sz, "have", -1)} className="w-5 h-5 rounded-full bg-[#EAEAE3] text-xs">-</button>
+                                    <span className="font-semibold min-w-[14px]">{cell.have}</span>
+                                    <button onClick={() => updateWardrobeCount(row.id, sz, "have", 1)} className="w-5 h-5 rounded-full bg-[#EAEAE3] text-xs">+</button>
+                                  </div>
+                                  <div className="text-[10px] text-[#75756E] mt-1">из {cell.need}</div>
+                                </div>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="widget-card-white p-4 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium">Нужно докупить</span>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FCE96A] font-medium">{wardrobeShortages.length}</span>
+                </div>
+
+                {wardrobeShortages.map(sh => (
+                  <div key={sh.id} className="flex items-center justify-between gap-2 p-3 rounded-2xl bg-[#F4F4F0] text-xs">
+                    <div>
+                      <div className="font-medium">{sh.category} • р. {sh.size} ({sh.missing} шт.)</div>
+                      <div className="text-[11px] text-[#75756E]">{sh.season}</div>
+                    </div>
+                    <button
+                      onClick={() => sendShortageToWishlist(sh)}
+                      className="px-3 py-1.5 rounded-full bg-[#1C1C1A] text-white text-[11px] font-medium shrink-0"
+                    >
+                      + В вишлист
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeTab === "wishlists" && (
+            <div className="space-y-3.5">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex gap-1.5 overflow-x-auto no-scrollbar">
+                  {data.wishlists.map(wl => (
+                    <button
+                      key={wl.id}
+                      onClick={() => setActiveWishlistId(wl.id)}
+                      className={`px-3.5 py-2 rounded-full text-xs transition ${
+                        activeWishlist?.id === wl.id ? "bg-[#1C1C1A] text-white font-medium" : "bg-[#EAEAE3] text-[#5C5C56]"
+                      }`}
+                    >
+                      {wl.title}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex gap-1.5">
+                  <button onClick={() => setShowImportModal(true)} className="px-3 py-2 rounded-full bg-[#EAEAE3] text-xs font-medium">
+                    Импорт
+                  </button>
+                  <button onClick={copyWishlistForFriends} className="px-3.5 py-2 rounded-full bg-[#FCE96A] text-[#1C1C1A] text-xs font-medium">
+                    Поделиться
+                  </button>
+                </div>
+              </div>
+
+              <form onSubmit={addWishlistItem} className="widget-card p-3.5 space-y-2">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newWishName}
+                    onChange={(e) => setNewWishName(e.target.value)}
+                    placeholder="Добавить подарок в список..."
+                    className="flex-1 px-3.5 py-2.5 bg-white rounded-2xl text-xs focus:outline-none"
+                  />
+                  <input
+                    type="text"
+                    value={newWishPrice}
+                    onChange={(e) => setNewWishPrice(e.target.value)}
+                    placeholder="CHF"
+                    className="w-20 px-3 py-2.5 bg-white rounded-2xl text-xs focus:outline-none"
+                  />
+                  <button type="submit" className="px-4 py-2.5 bg-[#1C1C1A] text-white rounded-2xl text-xs font-medium">
+                    +
+                  </button>
+                </div>
+              </form>
+
+              <div className="space-y-2.5">
+                {activeWishlist?.items.map(it => {
+                  const bg = it.status === "Подарено" ? "bg-[#EAEAE3] opacity-60" : it.status === "Забронировано" ? "bg-[#E2D6F9]" : "bg-[#DCE6F9]";
+                  return (
+                    <div key={it.id} className={`${bg} rounded-[26px] p-4 flex items-center justify-between gap-3`}>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[11px] opacity-65 mb-0.5">
+                          {it.price || "Подарок"} {it.reservedBy ? `• ${it.reservedBy}` : ""}
+                        </div>
+                        <h4 className={`text-sm font-medium ${it.status === "Подарено" ? "line-through" : ""}`}>{it.name}</h4>
+                        {it.notes && <p className="text-xs opacity-70 mt-0.5">{it.notes}</p>}
+                      </div>
+                      <button
+                        onClick={() => cycleWishStatus(it.id)}
+                        className="px-3 py-1.5 rounded-full bg-white/85 text-[11px] font-medium shrink-0"
+                      >
+                        {it.status}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {activeTab === "profile" && (
+            <div className="space-y-4">
+              <div className="bg-[#EDF5A6] rounded-[26px] p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium">Общий доступ для мужа</span>
+                  <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/80 font-medium">
+                    {syncStatus === "synced" ? "Онлайн" : "Локально"}
+                  </span>
+                </div>
+                <p className="text-xs opacity-80 leading-relaxed">
+                  Отправьте эту ссылку Давиду. Когда он откроет её на своём iPhone или iPad, все ваши галочки, покупки и размеры начнут обновляться у вас обоих автоматически.
+                </p>
+                <button
+                  onClick={copyInviteLinkForHusband}
+                  className="w-full py-3 rounded-2xl bg-[#1C1C1A] text-white text-xs font-medium flex items-center justify-center gap-2"
+                >
+                  <Icon name="copy" className="w-4 h-4" />
+                  <span>Скопировать ссылку-приглашение для мужа</span>
+                </button>
+
+                <div className="pt-2 border-t border-black/10">
+                  <div className="text-[11px] opacity-75 mb-1.5">Если муж уже создал список, вставьте его ссылку или код сюда:</div>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={joinInput}
+                      onChange={(e) => setJoinInput(e.target.value)}
+                      placeholder="Вставьте ссылку от мужа..."
+                      className="flex-1 px-3 py-2 bg-white/90 rounded-xl text-xs focus:outline-none"
+                    />
+                    <button onClick={connectToRoom} className="px-3.5 py-2 bg-white rounded-xl text-xs font-medium">
+                      Войти
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="widget-card p-4 space-y-3 text-xs">
+                <div className="text-sm font-medium">Данные семьи и ПДР</div>
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div>
+                    <label className="block text-[11px] text-[#75756E] mb-1">Мама</label>
+                    <input
+                      type="text"
+                      value={data.profile.momName}
+                      onChange={(e) => setData(p => ({ ...p, profile: { ...p.profile, momName: e.target.value } }))}
+                      className="w-full px-3 py-2.5 bg-white rounded-2xl"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] text-[#75756E] mb-1">Папа</label>
+                    <input
+                      type="text"
+                      value={data.profile.partnerName}
+                      onChange={(e) => setData(p => ({ ...p, profile: { ...p.profile, partnerName: e.target.value } }))}
+                      className="w-full px-3 py-2.5 bg-white rounded-2xl"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] text-[#75756E] mb-1">Имена малыша</label>
+                    <input
+                      type="text"
+                      value={data.profile.babyName}
+                      onChange={(e) => setData(p => ({ ...p, profile: { ...p.profile, babyName: e.target.value } }))}
+                      className="w-full px-3 py-2.5 bg-white rounded-2xl"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] text-[#75756E] mb-1">ПДР</label>
+                    <input
+                      type="date"
+                      value={data.profile.dueDate}
+                      onChange={(e) => setData(p => ({ ...p, profile: { ...p.profile, dueDate: e.target.value } }))}
+                      className="w-full px-3 py-2.5 bg-white rounded-2xl"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] text-[#75756E] mb-1">Страна</label>
+                    <input
+                      type="text"
+                      value={data.profile.country}
+                      onChange={(e) => setData(p => ({ ...p, profile: { ...p.profile, country: e.target.value } }))}
+                      className="w-full px-3 py-2.5 bg-white rounded-2xl"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] text-[#75756E] mb-1">Город</label>
+                    <input
+                      type="text"
+                      value={data.profile.city}
+                      onChange={(e) => setData(p => ({ ...p, profile: { ...p.profile, city: e.target.value } }))}
+                      className="w-full px-3 py-2.5 bg-white rounded-2xl"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {showAddModal && (
+            <div className="fixed inset-0 bg-black/30 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-4">
+              <form onSubmit={handleAddChecklistItem} className="bg-[#F4F4F0] w-full max-w-md rounded-[28px] p-5 space-y-3 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium">Новая задача / покупка</h3>
+                  <button type="button" onClick={() => setShowAddModal(false)}><Icon name="x" className="w-5 h-5" /></button>
+                </div>
+                <select
+                  value={newItem.section}
+                  onChange={(e) => setNewItem({ ...newItem, section: e.target.value })}
+                  className="w-full px-3.5 py-2.5 bg-white rounded-2xl text-xs"
+                >
+                  {SECTIONS.filter(s => s !== "Все").map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+                <input
+                  type="text"
+                  required
+                  value={newItem.name}
+                  onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                  placeholder="Что нужно купить или сделать?"
+                  className="w-full px-3.5 py-2.5 bg-white rounded-2xl text-xs"
+                />
+                <div className="grid grid-cols-2 gap-2">
+                  <input
+                    type="text"
+                    value={newItem.who}
+                    onChange={(e) => setNewItem({ ...newItem, who: e.target.value })}
+                    placeholder="Кто (Ада / Давид)"
+                    className="w-full px-3.5 py-2.5 bg-white rounded-2xl text-xs"
+                  />
+                  <input
+                    type="text"
+                    value={newItem.qty}
+                    onChange={(e) => setNewItem({ ...newItem, qty: e.target.value })}
+                    placeholder="Кол-во"
+                    className="w-full px-3.5 py-2.5 bg-white rounded-2xl text-xs"
+                  />
+                </div>
+                <input
+                  type="text"
+                  value={newItem.notes}
+                  onChange={(e) => setNewItem({ ...newItem, notes: e.target.value })}
+                  placeholder="Примечание или ссылка..."
+                  className="w-full px-3.5 py-2.5 bg-white rounded-2xl text-xs"
+                />
+                <button type="submit" className="w-full py-3 bg-[#1C1C1A] text-white rounded-2xl text-xs font-medium">
+                  Сохранить
+                </button>
+              </form>
+            </div>
+          )}
+
+          {showImportModal && (
+            <div className="fixed inset-0 bg-black/30 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-4">
+              <div className="bg-[#F4F4F0] w-full max-w-md rounded-[28px] p-5 space-y-3 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium">Импорт подарков</h3>
+                  <button onClick={() => setShowImportModal(false)}><Icon name="x" className="w-5 h-5" /></button>
+                </div>
+                <textarea
+                  rows="4"
+                  value={importText}
+                  onChange={(e) => setImportText(e.target.value)}
+                  placeholder={"Каждый подарок с новой строки..."}
+                  className="w-full p-3.5 bg-white rounded-2xl text-xs"
+                />
+                <button onClick={handleImportWishlist} className="w-full py-3 bg-[#1C1C1A] text-white rounded-2xl text-xs font-medium">
+                  Добавить в вишлист
+                </button>
+              </div>
+            </div>
+          )}
+
+          <nav className="fixed bottom-4 inset-x-4 max-w-md mx-auto bg-[#1C1C1A]/95 backdrop-blur-md text-white rounded-full p-1.5 shadow-xl z-40">
+            <div className="grid grid-cols-4 gap-1">
+              {[
+                { id: "checklist", label: "Списки", icon: "checkCircle" },
+                { id: "wardrobe", label: "Гардероб", icon: "shirt" },
+                { id: "wishlists", label: "Вишлист", icon: "gift" },
+                { id: "profile", label: "Семья", icon: "user" }
+              ].map(tab => {
+                const active = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex flex-col items-center justify-center py-2 rounded-full transition ${
+                      active ? "bg-[#FCE96A] text-[#1C1C1A] font-medium" : "text-white/60"
+                    }`}
+                  >
+                    <Icon name={tab.icon} className="w-4 h-4 mb-0.5" />
+                    <span className="text-[10px]">{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
