@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Is this your first?" />
+  <title>Is this your first?</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADqUlEQVR4nO3dPW7bQBRF4VGQIkB2nAVkvS4UIGUKAgbh5DikfubdNzpf7YJzcTQUXNiX6/VtSP/ypfoBlMs4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPoa/UDlPn268fxH/79/efzniTW5XX+YNypGj73Iq0sHscDgyALh7JmHBOa+Nt6lawWR0kWeyslsk4c5VnsrZHICnFEZbHXPZHeccRmsdc3ka5xtMhir2MiLX9D2q6M0fOZ+8XRceVNuyfv9FppNy7p8oppc3MsU8boc5YecXRZ87gWJ2oQR4sdb5B/rvQ48he8R/jpouMI3+4hks+YG0fyao8Ve9LQOGL3epLM8ybGkbnUswWeOi6OwI2mSTt7Vhxp68wXtUBWHIoSFEfUh6ZQzg4pceQskiBkjYg4QraIkrBJRBzKVB9HwkckU/ky9XEoVnEc5R+OcLX7eHMIVcbhtXFE4UreHEJlcXhtHFe1lTeHUE0cXhtnlSzmzSFkHEIFcfhOuc383bw5hIxDyDiEZsfhF457TF7Pm0PIOISMQ8g4hKbG4bfR+83c0JtDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEpsbR5d9XJZu5oTeHkHEIGYeQcQjNjsPvpPeYvJ43h5BxCBmHUEEcfu24zfzdvDmEjEOoJg7fLGeVLObNIVQWh5fHcVVbeXMIVcbh5XFE4UreHELFcXh5fK52H28Oofo4vDxI+TL1cShWRBzlH5FACZtExDEytsgRskZKHCNmkXI5OwTFoTRZceR8aKpELZAVxwhbZ7K0s8fFMfI2miPw1IlxjMilnirzvKFxjNS9niH2pLlxjODVHij5jNFxjOzt7hd+uvQ4RvyCN8s/V4M4Rocdz2pxoh5xjCZrHtTlLJfr9a36Gc5p/b/AumSxaXNzvOu17167J+8Xx2i48uj5zP1eK3stXjEds9j0jmMTm0jfLDYrxLGJSqR7Fpt14tiUJ7JGFpvV4tiUJLJSFps143g3oZL1mni3eBx7Dwxl4SD2XiiOD0618iI1fPC6cei/Wv6GVHMYh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmH0B/6Yf03O23ocwAAAABJRU5ErkJggg==" />
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADqUlEQVR4nO3dPW7bQBRF4VGQIkB2nAVkvS4UIGUKAgbh5DikfubdNzpf7YJzcTQUXNiX6/VtSP/ypfoBlMs4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEjEPoa/UDlPn268fxH/79/efzniTW5XX+YNypGj73Iq0sHscDgyALh7JmHBOa+Nt6lawWR0kWeyslsk4c5VnsrZHICnFEZbHXPZHeccRmsdc3ka5xtMhir2MiLX9D2q6M0fOZ+8XRceVNuyfv9FppNy7p8oppc3MsU8boc5YecXRZ87gWJ2oQR4sdb5B/rvQ48he8R/jpouMI3+4hks+YG0fyao8Ve9LQOGL3epLM8ybGkbnUswWeOi6OwI2mSTt7Vhxp68wXtUBWHIoSFEfUh6ZQzg4pceQskiBkjYg4QraIkrBJRBzKVB9HwkckU/ky9XEoVnEc5R+OcLX7eHMIVcbhtXFE4UreHEJlcXhtHFe1lTeHUE0cXhtnlSzmzSFkHEIFcfhOuc383bw5hIxDyDiEZsfhF457TF7Pm0PIOISMQ8g4hKbG4bfR+83c0JtDyDiEjEPIOISMQ8g4hIxDyDiEjEPIOISMQ8g4hIxDyDiEpsbR5d9XJZu5oTeHkHEIGYeQcQjNjsPvpPeYvJ43h5BxCBmHUEEcfu24zfzdvDmEjEOoJg7fLGeVLObNIVQWh5fHcVVbeXMIVcbh5XFE4UreHELFcXh5fK52H28Oofo4vDxI+TL1cShWRBzlH5FACZtExDEytsgRskZKHCNmkXI5OwTFoTRZceR8aKpELZAVxwhbZ7K0s8fFMfI2miPw1IlxjMilnirzvKFxjNS9niH2pLlxjODVHij5jNFxjOzt7hd+uvQ4RvyCN8s/V4M4Rocdz2pxoh5xjCZrHtTlLJfr9a36Gc5p/b/AumSxaXNzvOu17167J+8Xx2i48uj5zP1eK3stXjEds9j0jmMTm0jfLDYrxLGJSqR7Fpt14tiUJ7JGFpvV4tiUJLJSFps143g3oZL1mni3eBx7Dwxl4SD2XiiOD0618iI1fPC6cei/Wv6GVHMYh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmH0B/6Yf03O23ocwAAAABJRU5ErkJggg==" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    /* Чистые плоские цвета без градиентов и без обводок (как на IMG_4462_2) */
+    html, body {
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      background-color: #F4F4F0;
+      color: #1C1C1A;
+    }
+    .app-shell {
+      background-color: #F4F4F0;
+      min-height: 100vh;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Плоские карточки без обводок */
+    .widget-card {
+      background-color: #EAEAE3;
+      border-radius: 26px;
+    }
+    .widget-card-white {
+      background-color: #FFFFFF;
+      border-radius: 26px;
+    }
+
+    /* Два чистых желтых оттенка (как на IMG_4462_2): яркий лимонный и мягкий пастельно-желтый, без градиентов и обводок */
+    .yellow-bright {
+      background-color: #FCE96A;
+      color: #1C1C1A;
+    }
+    .yellow-soft {
+      background-color: #EDF5A6;
+      color: #1C1C1A;
+    }
+
+    /* Светлая нижняя капсула навигации без обводки */
+    .nav-pill-light {
+      background-color: rgba(234, 234, 227, 0.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 8px 28px rgba(28, 28, 26, 0.08);
+    }
+
+    /* Поля ввода без обводок, одинакового размера */
+    .uniform-input {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 42px;
+      min-height: 42px;
+      max-height: 42px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      font-size: 13px;
+      line-height: 20px;
+      padding: 0 12px;
+      border-radius: 16px;
+      background-color: #FFFFFF;
+      border: none;
+      color: #1C1C1A;
+    }
+    .uniform-input:focus {
+      outline: none;
+    }
+    input[type="date"].uniform-input {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#FCE96A]/50">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useMemo, useRef, useCallback } = React;
+
+    const Icon = ({ name, className = "w-5 h-5" }) => {
+      const paths = {
+        dots: <><circle cx="7" cy="15" r="2.2" fill="currentColor"/><circle cx="7" cy="9" r="2.2" fill="currentColor"/><circle cx="13" cy="15" r="2.2" fill="currentColor"/><circle cx="17" cy="11" r="4" stroke="currentColor" strokeWidth="2.4" fill="none"/></>,
+        check: <><path d="M20 6 9 17l-5-5"/></>,
+        checkCircle: <><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></>,
+        shirt: <><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></>,
+        gift: <><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></>,
+        user: <><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></>,
+        plus: <><path d="M5 12h14"/><path d="M12 5v14"/></>,
+        search: <><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></>,
+        link: <><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></>,
+        trash: <><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></>,
+        copy: <><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></>,
+        share: <><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></>,
+        sync: <><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></>,
+        key: <><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></>,
+        phone: <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></>,
+        mapPin: <><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></>,
+        globe: <><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>,
+        edit: <><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></>,
+        x: <><path d="M18 6 6 18"/><path d="m6 6 12 12"/></>
+      };
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          {paths[name]}
+        </svg>
+      );
+    };
+
+    const INITIAL_DATA = {"profile": {"momName": "Ада", "partnerName": "Давид", "babyName": "Лев / Сева", "dueDate": "2026-12-15", "country": "Швейцария", "city": "Цюрих", "babyGender": "unknown", "ultrasoundWeek": 32, "ultrasoundWeightGrams": 1950, "momHeightCm": 168, "dadHeightCm": 182, "urgentContacts": {"momPhone": "+41 79 000 00 01", "dadPhone": "+41 79 000 00 02", "hospitalName": "Universitätsspital Zürich / Klinik", "hospitalPhone": "+41 44 255 11 11", "hospitalAddress": "Frauenklinikstrasse 10, 8091 Zürich"}, "medicalCard": {"gestationWeek": "36", "bloodType": "A (II) Rh+", "allergies": "Нет / None", "chronicConditions": "Нет / None", "medications": "Пренатальные витамины, железо / Prenatal vitamins, iron", "insuranceNumber": "Helsana", "doctorAndMidwife": "Д-р / Акушерка (Hebamme)", "deliveryNotes": "Без особенностей / Uncomplicated pregnancy"}}, "checklist": [{"id": "d1", "section": "Документы", "category": "Документы", "name": "Список важных телефонов", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "Лежит у меня под монитором", "notes": "Акушерка, педиатр, гинеколог, служба экстренной помощи", "qty": "1 памятка"}, {"id": "d2", "section": "Документы", "category": "Документы", "name": "Свидетельство рождения Ада", "importance": "Важно", "status": "Начато", "who": "Ада", "link": "оригинальная инфа в тг в закрепе", "notes": "Выдано 22.10, апостиль делает Глеб", "qty": "1 шт."}, {"id": "d3", "section": "Документы", "category": "Документы", "name": "Свидетельство рождения Давид", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "оригинальная инфа в тг в закрепе", "notes": "Надо чтобы был не позднее моего на 6 мес", "qty": "1 шт."}, {"id": "d4", "section": "Документы", "category": "Документы", "name": "Свидетельство брака", "importance": "Важно", "status": "Сделано", "who": "", "link": "оригинальная инфа в тг в закрепе", "notes": "Соответствует требованиям", "qty": "1 шт."}, {"id": "d5", "section": "Документы", "category": "Документы", "name": "Давид прививка от коклюша", "importance": "Важно", "status": "Сделано", "who": "Давид", "link": "", "notes": "Осталось только подписать медицинский паспорт", "qty": ""}, {"id": "d6", "section": "Документы", "category": "Документы", "name": "Страховка малыша (Helsana)", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "https://portal.helsana.ch/beratung/session/b861ae87-a852-4720-a00d-67f9d5e84346/vorschau", "notes": "Посмотреть онлайн через личный кабинет, можно ли оформить без имени", "qty": ""}, {"id": "d7", "section": "Документы", "category": "Документы", "name": "Выбрать имя", "importance": "Важно", "status": "Начато", "who": "", "link": "", "notes": "Варианты: Лев, Сева", "qty": ""}, {"id": "d8", "section": "Документы", "category": "Документы", "name": "Определиться с национальностью ребенка", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": ""}, {"id": "d9", "section": "Документы", "category": "Документы", "name": "Решить вопрос с Ирландским паспортом", "importance": "Нужно после родов", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": ""}, {"id": "d10", "section": "Документы", "category": "Документы", "name": "Поиск педиатра (Kinderarzt)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "h1", "section": "Подготовить в доме", "category": "Спальня", "name": "Купить кровать", "importance": "Важно", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": "1 шт."}, {"id": "h2", "section": "Подготовить в доме", "category": "Спальня", "name": "Комплект белого постельного белья (IKEA NATTJASMIN)", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/nattjasmin-duvet-cover-and-pillowcase-white-00337177/", "notes": "1 шт + Zara", "qty": "1 шт."}, {"id": "h3", "section": "Подготовить в доме", "category": "Спальня", "name": "Новые подушки и матрас", "importance": "Важно", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": ""}, {"id": "h4", "section": "Подготовить в доме", "category": "Спальня", "name": "Простыни на резинке (NORDRUTA)", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/nordruta-fitted-sheet-white-40381795/", "notes": "NATTJASMIN, NORDRUTA", "qty": "2 шт."}, {"id": "h5", "section": "Подготовить в доме", "category": "Спальня", "name": "Накидка от протекания (ÄNGSKORN)", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/aengskorn-mattress-protector-20461991/", "notes": "", "qty": "1 шт."}, {"id": "h6", "section": "Подготовить в доме", "category": "Спальня", "name": "Шкаф в угол", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/lastare-frame-with-doors-white-70596469/#content", "notes": "Ширина 40–60 см, глубина 62 см", "qty": "1 шт."}, {"id": "h7", "section": "Подготовить в доме", "category": "Спальня", "name": "Перебрать аптечку и выделить место для ребенка", "importance": "По желанию", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": ""}, {"id": "h8", "section": "Подготовить в доме", "category": "Спальня", "name": "Перестановка в спальне и сборка новой кровати", "importance": "Важно", "status": "Сделано", "who": "Давид", "link": "", "notes": "Передвинуть комод, шкаф, убрать старую кровать", "qty": ""}, {"id": "h9", "section": "Подготовить в доме", "category": "Спальня", "name": "Поменять мне прикроватный столик", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 шт."}, {"id": "h10", "section": "Подготовить в доме", "category": "Весь дом", "name": "Наладить клининг", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "h11", "section": "Подготовить в доме", "category": "Весь дом", "name": "Робот-пылесос", "importance": "По желанию", "status": "Сделано", "who": "", "link": "", "notes": "", "qty": "1 шт."}, {"id": "h12", "section": "Подготовить в доме", "category": "Кухня", "name": "Освободить морозилку и сделать заморозки", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "Разморозить, почистить, заготовить полуфабрикаты", "qty": ""}, {"id": "h13", "section": "Подготовить в доме", "category": "Кухня", "name": "Составить меню что можно/нельзя есть мне", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "h14a", "section": "Подготовить в доме", "category": "Ванная", "name": "Собрать шкаф BILLY / OXBERG в ванной", "importance": "Важно", "status": "Сделано", "who": "", "link": "https://www.ikea.com/ch/en/p/billy-oxberg-bookcase-with-panel-glass-door-white-glass-s39287421/", "notes": "40x30x202 cm", "qty": "1 шт."}, {"id": "h14b", "section": "Подготовить в доме", "category": "Ванная", "name": "Стойка у раковины в ванной", "importance": "По желанию", "status": "Сделано", "who": "", "link": "", "notes": "Для хранения средств", "qty": "1 шт."}, {"id": "h14c", "section": "Подготовить в доме", "category": "Ванная", "name": "Корзинка под раковиной", "importance": "По желанию", "status": "Сделано", "who": "", "link": "", "notes": "Для фена и мелочей", "qty": "1 шт."}, {"id": "b12", "section": "Малыш: уход", "category": "Гигиена", "name": "Подгузники размера 1 и 2 (Moony / Merries / Goon)", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Японские подгузники", "qty": "2 уп."}, {"id": "b13a", "section": "Малыш: уход", "category": "Гигиена", "name": "Хлопковые пелёнки / молтоновые салфетки", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "Несколько шт."}, {"id": "b13b", "section": "Малыш: уход", "category": "Гигиена", "name": "Муслиновые пелёнки / салфетки (Nuscheli)", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "Несколько шт."}, {"id": "b14", "section": "Малыш: уход", "category": "Гигиена", "name": "Мягкие мочалки (baby sponge)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "См. на распродаже", "qty": "1 компл."}, {"id": "b15a", "section": "Малыш: уход", "category": "Гигиена", "name": "Влажные салфетки", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Особенно для прогулок", "qty": "1–2 уп."}, {"id": "b15b", "section": "Малыш: уход", "category": "Гигиена", "name": "Впитывающие одноразовые пелёнки", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Взяла большую пачку", "qty": "1 уп."}, {"id": "b16", "section": "Малыш: уход", "category": "Гигиена", "name": "Мусорка-накопитель для подгузников", "importance": "По желанию", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}, {"id": "b17a", "section": "Малыш: уход", "category": "Уход", "name": "Нейтральное масло (Baby oil)", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "Понемногу, при необходимости", "qty": "1 флакон"}, {"id": "b17b", "section": "Малыш: уход", "category": "Уход", "name": "Крем под подгузник (Bepanthen)", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "При необходимости", "qty": "1 шт."}, {"id": "b18", "section": "Малыш: уход", "category": "Аптечка", "name": "Цифровой термометр", "importance": "Важно", "status": "Куплено", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}, {"id": "b19a", "section": "Малыш: уход", "category": "Уход", "name": "Детские ножницы или щипчики для ногтей", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 шт."}, {"id": "b19b", "section": "Малыш: уход", "category": "Купание", "name": "Детская ванночка или ведёрко для купания", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "Дадут", "qty": "1 шт."}, {"id": "b19c", "section": "Малыш: уход", "category": "Аптечка", "name": "Стерильные салфетки и физраствор", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "При необходимости", "qty": "1 компл."}, {"id": "b20", "section": "Малыш: уход", "category": "Аптечка", "name": "Витамин D в каплях", "importance": "Нужно после родов", "status": "Не нужно", "who": "", "link": "", "notes": "Выпишут рецепт при выписке из роддома", "qty": "1 флакон"}, {"id": "m1a", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Вкладыши для бюстгальтера (Nursing pads)", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Шерсть/шёлк", "qty": "1 уп."}, {"id": "m1b", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Крем для сосков (Lanolin / Purelan)", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "Для ухода и заживления", "qty": "1 шт."}, {"id": "m2a", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Молокоотсос", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "По необходимости", "qty": "1 шт."}, {"id": "m2b", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Стартовый набор бутылочек", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "По необходимости", "qty": "1 набор"}, {"id": "m2c", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Бюстгальтеры для кормления", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1–2 шт."}, {"id": "m2d", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Одежда, удобная для кормления", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "2–3 шт."}, {"id": "m2e", "section": "Для мамы: ГВ и гигиена", "category": "ГВ и питание", "name": "Подушка для кормления", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 шт."}, {"id": "m3a", "section": "Для мамы: ГВ и гигиена", "category": "После родов", "name": "Послеродовые прокладки", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "1–2 уп."}, {"id": "m3b", "section": "Для мамы: ГВ и гигиена", "category": "После родов", "name": "Удобное высокое бельё / одноразовые трусики", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "1 уп."}, {"id": "m3c", "section": "Для мамы: ГВ и гигиена", "category": "После родов", "name": "Бутылочка для интимного душа (пери-бутылочка)", "importance": "По желанию", "status": "Куплено", "who": "Ада", "link": "", "notes": "Облегчает гигиену", "qty": "1 шт."}, {"id": "m4a", "section": "Для мамы: ГВ и гигиена", "category": "После родов", "name": "Охлаждающие компрессы", "importance": "Важно", "status": "Куплено", "who": "Ада", "link": "", "notes": "", "qty": "1 уп."}, {"id": "m4b", "section": "Для мамы: ГВ и гигиена", "category": "После родов", "name": "Набор после кесарева сечения", "importance": "Нужно после родов", "status": "Куплено", "who": "Ада", "link": "", "notes": "Высокое мягкое бельё, свободные брюки, подушка для поддержки живота", "qty": "1 набор"}, {"id": "r1a", "section": "Сумка в роддом", "category": "Документы", "name": "Карта медицинского страхования (Helsana)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Предъявить при поступлении", "qty": "1 шт."}, {"id": "r1b", "section": "Сумка в роддом", "category": "Документы", "name": "Паспорта и Ausländerausweis родителей", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "Оба комплекта", "qty": "2 компл."}, {"id": "r1c", "section": "Сумка в роддом", "category": "Документы", "name": "Mutterschaftspass, карта группы крови и анализы", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Включая мазок на стрептококк B", "qty": "1 папка"}, {"id": "r1d", "section": "Сумка в роддом", "category": "Документы", "name": "Пакет документов для ЗАГСа (Zivilstandsamt)", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "Свидетельство о браке с апостилем", "qty": "1 папка"}, {"id": "r2a", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Длинная свободная рубашка для родов", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Для схваток и контакта «кожа к коже»", "qty": "1 шт."}, {"id": "r2b", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Тёплые носки", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1–2 пары"}, {"id": "r2c", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Моющиеся тапочки / сланцы", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 пара"}, {"id": "r2d", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Компрессионные чулки (Kompressionsstrümpfe)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 пара"}, {"id": "r3a", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Бальзам для губ", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "От пересыхания губ при дыхании", "qty": "1 шт."}, {"id": "r3b", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Термальная вода и резинки для волос", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 набор"}, {"id": "r4a", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Снеки и вода со спортивным носиком", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "Запас на сутки для мамы и партнера", "qty": ""}, {"id": "r4b", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Зарядка с длинным проводом (3 м) и пауэрбанк", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "2 шт."}, {"id": "r4c", "section": "Сумка в роддом", "category": "Kreißsaal", "name": "Сменная одежда и обувь для партнера (Давида)", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 компл."}, {"id": "r5a", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Пижамы или сорочки для кормления", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "2–3 шт."}, {"id": "r5b", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Мягкие топы-бра для кормления", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "2 шт."}, {"id": "r5c", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Мягкий халат или кардиган", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 шт."}, {"id": "r5d", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Высокие хлопковые трусики", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "3–4 шт."}, {"id": "r5e", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Угги или свободная обувь без шнурков", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 пара"}, {"id": "r6a", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Косметичка и гигиенические принадлежности", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Щетка, паста, мягкий гель", "qty": "1 шт."}, {"id": "r6b", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Мазь Hametum и крем Purelan", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "2 тюбика"}, {"id": "r6c", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Личные медикаменты и витамины", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "r6d", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Беруши, наушники и маска для сна", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 набор"}, {"id": "o1", "section": "Выписка из роддома", "category": "Для малыша", "name": "Хлопковый боди с длинным рукавом на запахе (р. 56)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "1-й слой, кимоно на кнопках сбоку", "qty": "1 шт."}, {"id": "o2", "section": "Выписка из роддома", "category": "Для малыша", "name": "Хлопковый слип / «человечек» (р. 56)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "1-й слой, с антицарапками", "qty": "1 шт."}, {"id": "o3", "section": "Выписка из роддома", "category": "Для малыша", "name": "Тёплые носочки для малыша", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "1-й слой", "qty": "1 пара"}, {"id": "o4", "section": "Выписка из роддома", "category": "Для малыша", "name": "Комбинезон второго слоя из мериноса или флиса (р. 56–62)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "2-й слой поверх слипа", "qty": "1 шт."}, {"id": "o5", "section": "Выписка из роддома", "category": "Для малыша", "name": "Тёплая зимняя шапочка на завязках", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Закрывающая уши и лоб", "qty": "1 шт."}, {"id": "o6", "section": "Выписка из роддома", "category": "Для малыша", "name": "Тонкая хлопковая шапочка-подшлемник", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Под тёплую шапку", "qty": "1 шт."}, {"id": "o7", "section": "Выписка из роддома", "category": "Для малыша", "name": "Автолюлька (Babyschale 0+) с зимним конвертом", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "Без автокресла из клиники не выпишут", "qty": "1 шт."}, {"id": "o8", "section": "Выписка из роддома", "category": "Для малыша", "name": "Муслиновая пеленка (Nuscheli) и шерстяной плед", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "В автокресло под головку и поверх ремней", "qty": "1 компл."}, {"id": "o9", "section": "Выписка из роддома", "category": "Для мамы", "name": "Одежда и обувь для мамы на выписку", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Мягкие брюки, лонгслив для кормления, худи, угги, пуховик", "qty": "1 компл."}, {"id": "o10", "section": "Выписка из роддома", "category": "Документы", "name": "Сообщить клинике имя педиатра (Kinderarzt)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "o11", "section": "Выписка из роддома", "category": "Документы", "name": "Предупредить послеродовую акушерку (Wochenbett-Hebamme)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Для визита на дом на следующий день", "qty": ""}, {"id": "o12", "section": "Выписка из роддома", "category": "Документы", "name": "Забрать Gesundheitsheft и выкупить рецепты (витамин D, железо)", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "В аптеке госпиталя", "qty": ""}, {"id": "d11", "section": "Документы", "category": "Документы", "name": "Составить вишлист для желающих", "importance": "По желанию", "status": "Начато", "who": "Ада", "link": "", "notes": "", "qty": ""}, {"id": "r5f", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Удобные домашние брюки / леггинсы и футболки для кормления", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Одежда из мягкого хлопка с широким поясом для дневного времени", "qty": "2 компл."}, {"id": "r6e", "section": "Сумка в роддом", "category": "Wochenbett", "name": "Вкладыши для груди (Stilleinlagen)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "При приходе молока в палате", "qty": "1 уп."}, {"id": "o13", "section": "Выписка из роддома", "category": "Для малыша", "name": "Подгузники для новорождённых (размер 1) в дорогу", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "В запас в дорожную сумку", "qty": "2 шт."}, {"id": "o14", "section": "Выписка из роддома", "category": "Для малыша", "name": "Влажные салфетки (маленькая пачка) в дорогу", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Для гигиены в дороге", "qty": "1 уп."}, {"id": "o15", "section": "Выписка из роддома", "category": "Для мамы", "name": "Бюстгальтер для кормления и вкладыши для груди на выписку", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "На 1 размер больше, чем в конце беременности", "qty": "1 компл."}, {"id": "o16", "section": "Выписка из роддома", "category": "Для мамы", "name": "Послеродовые сетчатые или высокие хлопковые трусики на выписку", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Мягкие, с высокой посадкой", "qty": "1–2 шт."}, {"id": "s1", "section": "Для сна", "category": "Сон", "name": "Тёплый кокон для сна или коляски (Woolville)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "https://www.woolville.ch/kinderfu-sack-mit-merinowolle-schwarz_z5371/", "notes": "Дадут (мериносовая шерсть)", "qty": "1 шт."}, {"id": "s2", "section": "Для сна", "category": "Сон", "name": "Спальный мешок для новорождённого (Schlafsack)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "По сезону (зима — TOG 2.5)", "qty": "1–2 шт."}, {"id": "s3", "section": "Для сна", "category": "Сон", "name": "Приставная кроватка / колыбель", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}, {"id": "s4", "section": "Для сна", "category": "Сон", "name": "Матрас в детскую кроватку", "importance": "Важно", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}, {"id": "s5", "section": "Для сна", "category": "Сон", "name": "Непромокаемый наматрасник и простыни на резинке", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "По размеру детского матраса", "qty": "2 шт."}, {"id": "s6", "section": "Для сна", "category": "Сон", "name": "Пелёнка-кокон для сна", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "На молнии или липучке", "qty": "1–2 шт."}, {"id": "s7", "section": "Для сна", "category": "Сон", "name": "Ночник с мягким тёплым светом", "importance": "По желанию", "status": "В планах", "who": "Ада", "link": "", "notes": "Для ночных кормлений и смены подгузника", "qty": "1 шт."}, {"id": "s8", "section": "Для сна", "category": "Сон", "name": "Радионяня / видеоняня", "importance": "Нужно после родов", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}, {"id": "f1", "section": "Для еды", "category": "Еда", "name": "Бутылочки для кормления (стартовый набор)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "С антиколиковой соской 0+", "qty": "2–3 шт."}, {"id": "f2", "section": "Для еды", "category": "Еда", "name": "Пустышки / соски для новорождённых (0–2 мес.)", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "Силиконовые или латексные", "qty": "2 шт."}, {"id": "f3", "section": "Для еды", "category": "Еда", "name": "Ёршик для мытья бутылочек и сосок", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 шт."}, {"id": "f4", "section": "Для еды", "category": "Еда", "name": "Стерилизатор или пакеты для стерилизации в СВЧ", "importance": "Нужно после родов", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "1 шт."}, {"id": "f5", "section": "Для еды", "category": "Еда", "name": "Молочная смесь Pre (на всякий случай)", "importance": "По желанию", "status": "В планах", "who": "Давид", "link": "", "notes": "1 баночка или готовые порции", "qty": "1 шт."}, {"id": "f6", "section": "Для еды", "category": "Еда", "name": "Слюнявчики / муслиновые салфетки для кормления", "importance": "Важно", "status": "В планах", "who": "Ада", "link": "", "notes": "", "qty": "4–5 шт."}, {"id": "f7", "section": "Для еды", "category": "Еда", "name": "Подогреватель для бутылочек", "importance": "По желанию", "status": "В планах", "who": "Давид", "link": "", "notes": "", "qty": "1 шт."}], "wardrobe": [{"id": "w1", "category": "Боди с длинным рукавом (кимоно)", "seasonal": "all", "sizes": {"50": {"have": 2, "need": 3}, "56": {"have": 3, "need": 3}, "62": {"have": 3, "need": 3}, "68": {"have": 1, "need": 3}, "74": {"have": 0, "need": 3}, "80": {"have": 0, "need": 3}}}, {"id": "w2", "category": "Хлопковые слипы (человечки)", "seasonal": "all", "sizes": {"50": {"have": 2, "need": 3}, "56": {"have": 3, "need": 3}, "62": {"have": 3, "need": 3}, "68": {"have": 0, "need": 3}, "74": {"have": 0, "need": 3}, "80": {"have": 0, "need": 3}}}, {"id": "w3", "category": "Штанишки / леггинсы", "seasonal": "all", "sizes": {"50": {"have": 1, "need": 3}, "56": {"have": 3, "need": 3}, "62": {"have": 3, "need": 3}, "68": {"have": 0, "need": 3}, "74": {"have": 0, "need": 3}, "80": {"have": 0, "need": 3}}}, {"id": "w4", "category": "Лонгсливы / кофточки", "seasonal": "all", "sizes": {"50": {"have": 0, "need": 2}, "56": {"have": 2, "need": 3}, "62": {"have": 2, "need": 3}, "68": {"have": 0, "need": 3}, "74": {"have": 0, "need": 3}, "80": {"have": 0, "need": 3}}}, {"id": "w5", "category": "Теплый комбинезон (меринос / флис)", "seasonal": "cold", "sizes": {"50": {"have": 0, "need": 1}, "56": {"have": 1, "need": 1}, "62": {"have": 1, "need": 1}, "68": {"have": 0, "need": 1}, "74": {"have": 0, "need": 1}, "80": {"have": 0, "need": 1}}}, {"id": "w6", "category": "Тёплая шапочка / чепчик", "seasonal": "cold", "sizes": {"50": {"have": 1, "need": 1}, "56": {"have": 2, "need": 2}, "62": {"have": 1, "need": 2}, "68": {"have": 0, "need": 2}, "74": {"have": 0, "need": 2}, "80": {"have": 0, "need": 2}}}, {"id": "w7", "category": "Носочки / пинетки (пар)", "seasonal": "all", "sizes": {"50": {"have": 2, "need": 3}, "56": {"have": 3, "need": 3}, "62": {"have": 2, "need": 3}, "68": {"have": 0, "need": 3}, "74": {"have": 0, "need": 3}, "80": {"have": 0, "need": 3}}}], "wishlists": [{"id": "wl1", "title": "Baby Shower & Выписка", "description": "Подарки на первые месяцы жизни", "items": [{"id": "wi1", "name": "Теплый конверт из мериноса (Woolville)", "price": "120 CHF", "link": "https://www.woolville.ch/kinderfu-sack-mit-merinowolle-schwarz_z5371/", "status": "Забронировано", "reservedBy": "Бабушка", "notes": "Черный или графит"}, {"id": "wi2", "name": "Шерстяной комбинезон Disana / Engel (р. 62/68)", "price": "85 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "Валяная шерсть мериноса"}, {"id": "wi3", "name": "Муслиновые пеленки (Nuscheli) 120×120", "price": "35 CHF", "link": "", "status": "Подарено", "reservedBy": "Подруга", "notes": "Органический хлопок"}, {"id": "wi4", "name": "Боди-кимоно с запахом (размер 62)", "price": "25 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "1-2 шт. с антицарапками"}, {"id": "wi5", "name": "Подушка для кормления", "price": "65 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "Со съемным чехлом"}]}, {"id": "wl2", "title": "На вырост (3–9 мес.)", "description": "Вещи на весну и лето", "items": [{"id": "wi6", "name": "Боди и слипы размера 68 и 74", "price": "30 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "Легкий хлопок на весну"}, {"id": "wi7", "name": "Развивающий коврик с дугами", "price": "70 CHF", "link": "", "status": "Свободно", "reservedBy": "", "notes": "В спокойных тонах"}]}], "customSections": []};
+
+    // Надёжное CORS-облако (api.restful-api.dev возвращает ID прямо в теле JSON — работает в Safari на iPhone/iPad без блокировки заголовков!)
+    // Облачная синхронизация через личную бесплатную базу Firebase Realtime Database (обновление каждую 1 сек)
+    function parseHashParams() {
+      const raw = window.location.hash.replace(/^#/, "");
+      const params = new URLSearchParams(raw);
+      return {
+        room: (params.get("room") || "").trim(),
+        wishlist: (params.get("wishlist") || "").trim(),
+        fb: (params.get("fb") || "").trim().replace(/\/+$/, "")
+      };
+    }
+    function normalizeFbUrl(url) {
+      if (!url) return "";
+      let clean = url.trim().replace(/\/+$/, "");
+      if (!clean.startsWith("http")) clean = "https://" + clean;
+      return clean;
+    }
+
+    const SECTION_TILES = [
+      { id: "Все", label: "Все списки" },
+      { id: "Сумка в роддом", label: "Сумка в роддом" },
+      { id: "Выписка из роддома", label: "Выписка" },
+      { id: "Малыш: уход", label: "Малыш: уход" },
+      { id: "Для сна", label: "Для сна" },
+      { id: "Для еды", label: "Для еды" },
+      { id: "Для мамы: ГВ и гигиена", label: "Для мамы" },
+      { id: "Документы", label: "Документы" },
+      { id: "Подготовить в доме", label: "Дом" }
+    ];
+
+    const SIZES = ["50", "56", "62", "68", "74", "80"];
+    const PRIORITIES = ["Важно", "Нужно после родов", "По желанию"];
+
+    const MED_TRANSLATIONS = {
+      "Нет": "None",
+      "нет": "None",
+      "Отсутствуют": "None",
+      "Пренатальные витамины, железо": "Prenatal vitamins, iron",
+      "Пренатальные витамины": "Prenatal vitamins",
+      "Железо": "Iron supplements",
+      "Без особенностей": "Uncomplicated pregnancy",
+      "Первая беременность": "First pregnancy (Primigravida)",
+      "Естественные роды": "Vaginal delivery planned",
+      "Кесарево сечение": "C-section planned"
+    };
+
+    function translateMedicalTextToEn(val) {
+      if (!val || !val.trim()) return "Not specified";
+      let out = val.trim();
+      Object.entries(MED_TRANSLATIONS).forEach(([ru, en]) => {
+        if (out.toLowerCase() === ru.toLowerCase()) out = en;
+        else if (out.includes(ru) && !out.includes(en)) out = out.replace(ru, en);
+      });
+      out = out
+        .replace(/нед\.?/gi, "weeks")
+        .replace(/группа/gi, "group")
+        .replace(/отрицательный/gi, "Rh-")
+        .replace(/положительный/gi, "Rh+")
+        .replace(/аллергия на/gi, "Allergy to");
+      return out;
+    }
+
+    function detectClimateAndRegion(country = "", city = "") {
+      const text = `${country} ${city}`.toLowerCase();
+      const warmKeywords = ["оаэ", "uae", "дубай", "dubai", "абу-даби", "таиланд", "thailand", "бали", "bali", "израиль", "israel", "тель-авив", "кипр", "cyprus", "испан", "spain", "барселон", "малаг", "аликанте", "валенс", "португал", "portugal", "лиссабон", "грец", "greece", "турц", "turkey", "антал", "майами", "miami", "калифорн", "лоc-анджелес", "los angeles", "сингапур", "singapore", "мексик", "итал", "сицил", "мальт", "егип"];
+      const coldKeywords = ["росси", "russia", "москв", "питер", "санкт", "новосиб", "екатерин", "казан", "канад", "canada", "торонт", "монреал", "норвег", "norway", "швец", "sweden", "финлянд", "finland", "казахст", "беларус", "исланд", "эстон", "латв", "литв"];
+      const southernHemisphere = ["австрал", "australia", "сидней", "мельбурн", "новая зеланд", "new zealand", "аргентин", "чили", "бразил", "юар"];
+
+      let climate = "temperate";
+      if (warmKeywords.some(k => text.includes(k))) climate = "warm";
+      else if (coldKeywords.some(k => text.includes(k))) climate = "cold";
+
+      let docProfile = "intl";
+      if (text.includes("швейцар") || text.includes("switzerland") || text.includes("цюрих") || text.includes("zurich") || text.includes("женев") || text.includes("базел") || text.includes("берн") || text.includes("лозан")) {
+        docProfile = "ch";
+      } else if (text.includes("герман") || text.includes("germany") || text.includes("берлин") || text.includes("мюнхен") || text.includes("австр") || text.includes("austria") || text.includes("вена")) {
+        docProfile = "de";
+      } else if (text.includes("росси") || text.includes("russia") || text.includes("москв") || text.includes("санкт") || text.includes("питер")) {
+        docProfile = "ru";
+      }
+
+      const isSouth = southernHemisphere.some(k => text.includes(k));
+      return { climate, docProfile, isSouth };
+    }
+
+    function getSeasonInfo(dateStr, country = "", city = "") {
+      const { climate, isSouth } = detectClimateAndRegion(country, city);
+      if (!dateStr) return { name: "Зима", code: "winter", climate };
+      let month = new Date(dateStr).getMonth() + 1;
+      if (isSouth) month = ((month + 5) % 12) + 1;
+      if (month === 12 || month === 1 || month === 2) return { name: "Зима", code: "winter", climate };
+      if (month >= 3 && month <= 5) return { name: "Весна", code: "spring", climate };
+      if (month >= 6 && month <= 8) return { name: "Лето", code: "summer", climate };
+      return { name: "Осень", code: "autumn", climate };
+    }
+
+    function getSizeSeasonMeta(dueDateStr, size, country = "", city = "") {
+      const { climate, isSouth } = detectClimateAndRegion(country, city);
+      const offsets = { "50": 0, "56": 0, "62": 2, "68": 4, "74": 7, "80": 10 };
+      const monthsAhead = offsets[size] || 0;
+      const d = dueDateStr ? new Date(dueDateStr) : new Date("2026-12-15");
+      d.setMonth(d.getMonth() + monthsAhead);
+      let m = d.getMonth() + 1;
+      if (isSouth) m = ((m + 5) % 12) + 1;
+
+      let label = "Осень";
+      let code = "autumn";
+      if (m === 12 || m === 1 || m === 2) { label = "Зима"; code = "winter"; }
+      else if (m >= 3 && m <= 5) { label = "Весна"; code = "spring"; }
+      else if (m >= 6 && m <= 8) { label = "Лето"; code = "summer"; }
+
+      const isDistantFuture = monthsAhead >= 6;
+      return { label, code, climate, isDistantFuture, monthsAhead };
+    }
+
+    function estimateBirthSize(profile) {
+      const week = Number(profile.ultrasoundWeek) || 32;
+      const weight = Number(profile.ultrasoundWeightGrams) || 1950;
+      const momH = Number(profile.momHeightCm) || 168;
+      const dadH = Number(profile.dadHeightCm) || 180;
+      const gender = profile.babyGender || "unknown";
+
+      const weeksLeft = Math.max(0, 40 - week);
+      let estBirthWeight = weight + weeksLeft * 195;
+
+      const midParentHeight = (momH + dadH) / 2;
+      const heightFactor = (midParentHeight - 172) * 12;
+      const genderFactor = gender === "boy" ? 80 : gender === "girl" ? -70 : 0;
+      estBirthWeight = Math.round(estBirthWeight + heightFactor + genderFactor);
+
+      const estLength = Math.round(48 + (estBirthWeight - 3000) / 220 + (midParentHeight - 172) * 0.12);
+      const recommendedSize = estLength <= 51 && estBirthWeight < 3200 ? "50" : estLength >= 55 || estBirthWeight > 4100 ? "62" : "56";
+
+      return { estBirthWeight, estLength, recommendedSize };
+    }
+
+    function buildPersonalizedStarterData({ momName, dueDate, country, city, momHeightCm }) {
+      const mom = momName.trim() || "Мама";
+      const momH = Number(momHeightCm) || 168;
+      const { climate, docProfile } = detectClimateAndRegion(country, city);
+      const season = getSeasonInfo(dueDate, country, city);
+
+      const isColdBirth = climate !== "warm" && (season.code === "winter" || season.code === "autumn");
+      const isWarmBirth = climate === "warm" || season.code === "summer";
+      const startSizeLabel = momH <= 162 ? "50–56" : momH >= 175 ? "56–62" : "56";
+
+      let docItems = [];
+      if (docProfile === "ch") {
+        docItems = [
+          { id: "nd1", name: "Карта медстраховки (Krankenkasse) и полис", notes: "Для поступления в клинику" },
+          { id: "nd2", name: "Предварительная страховка малыша (Vorgeburtliche Anmeldung)", notes: "Оформить до родов в вашей страховой" },
+          { id: "nd3", name: "Документы для ЗАГСа (Zivilstandsamt)", notes: "Свидетельства о рождении и браке с апостилем" },
+          { id: "nd4", name: "Поиск педиатра (Kinderarzt)", notes: "Для осмотра в 1 месяц" },
+          { id: "nd5", name: "Поиск послеродовой акушерки (Wochenbett-Hebamme)", notes: "Бронировать заранее" },
+          { id: "nd6", name: "Список экстренных телефонов", notes: "Клиника, акушерка, врач" }
+        ];
+      } else if (docProfile === "de") {
+        docItems = [
+          { id: "nd1", name: "Mutterpass и карта медстраховки (Versichertenkarte)", notes: "Взять в клинику" },
+          { id: "nd2", name: "Документы для Standesamt (Geburtsurkunde / Eheurkunde)", notes: "Для регистрации малыша" },
+          { id: "nd3", name: "Поиск акушерки (Hebamme) и педиатра (Kinderarzt)", notes: "Осмотр U2 / U3" },
+          { id: "nd4", name: "Подготовка заявлений на Kindergeld и Elterngeld", notes: "Заполнить черновик заранее", importance: "Нужно после родов" },
+          { id: "nd5", name: "Список важных телефонов", notes: "Клиника, акушерка, педиатр" }
+        ];
+      } else if (docProfile === "ru") {
+        docItems = [
+          { id: "nd1", name: "Обменная карта и результаты всех УЗИ/анализов", notes: "Держать в папке с 30 недели" },
+          { id: "nd2", name: "Паспорт, полис ОМС, СНИЛС, родовой сертификат / контракт", notes: "Оригиналы и копии" },
+          { id: "nd3", name: "Выбрать роддом и врача / акушерку", notes: "" },
+          { id: "nd4", name: "Свидетельство о рождении (ЗАГС / Госуслуги)", notes: "В первый месяц после родов", importance: "Нужно после родов" },
+          { id: "nd5", name: "Полис ОМС и прописка малыша", notes: "После получения свидетельства", importance: "Нужно после родов" },
+          { id: "nd6", name: "Выбор педиатра / поликлиники", notes: "" }
+        ];
+      } else {
+        docItems = [
+          { id: "nd1", name: "Медстраховка и контракт с клиникой / врачом", notes: "Уточнить покрытие родов" },
+          { id: "nd2", name: "Паспорта и ВНЖ родителей", notes: "Проверить сроки действия" },
+          { id: "nd3", name: "Обменная карта и результаты анализов", notes: "" },
+          { id: "nd4", name: "Документы для регистрации рождения (апостили/переводы)", notes: "Уточнить требования страны" },
+          { id: "nd5", name: "Выбор педиатра", notes: "" },
+          { id: "nd6", name: "Оформление гражданства / паспорта ребёнка", notes: "", importance: "Нужно после родов" }
+        ];
+      }
+
+      const docsChecklist = docItems.map(d => ({
+        id: d.id, section: "Документы", category: "Документы", name: d.name,
+        importance: d.importance || "Важно", status: "В планах", who: mom, link: "", notes: d.notes || "", qty: ""
+      }));
+
+      const dischargeItems = [
+        { id: "no1", name: `Хлопковый боди на запахе (р. ${startSizeLabel})`, notes: isWarmBirth ? "С коротким или тонким рукавом" : "С длинным рукавом, 1-й слой" },
+        { id: "no2", name: `Хлопковый слип / «человечек» (р. ${startSizeLabel})`, notes: isWarmBirth ? "Лёгкий дышащий хлопок" : "1-й слой с антицарапками" },
+        { id: "no3", name: isWarmBirth ? "Тонкая хлопковая шапочка / панамка" : "Тёплая шапочка на завязках + тонкий подшлемник", notes: "По погоде" },
+        ...(isColdBirth ? [
+          { id: "no4", name: climate === "cold" ? "Зимний тёплый комбинезон + слой мериноса/флиса" : "Комбинезон второго слоя (меринос или флис)", notes: "Для холодной погоды" },
+          { id: "no5", name: "Тёплые носочки", notes: "" },
+          { id: "no6", name: "Автолюлька 0+ с тёплым конвертом", notes: "Обязательно для поездки домой" }
+        ] : isWarmBirth ? [
+          { id: "no4", name: "Лёгкий муслиновый плед", notes: "Защита от солнца и кондиционера" },
+          { id: "no6", name: "Автолюлька 0+ с дышащим хлопковым вкладышем", notes: "Обязательно для поездки домой" }
+        ] : [
+          { id: "no4", name: "Демисезонный комбинезон (флис / хлопок на подкладе)", notes: "Для переменчивой погоды" },
+          { id: "no5", name: "Хлопковые носочки и вязаный плед", notes: "" },
+          { id: "no6", name: "Автолюлька 0+", notes: "Обязательно для поездки домой" }
+        ]),
+        { id: "no7", name: "Муслиновая пелёнка", notes: "В дорогу от срыгиваний" },
+        { id: "no8", name: isColdBirth ? "Тёплая одежда и свободная обувь без шнурков для мамы" : "Свободная дышащая одежда и удобная обувь для мамы", notes: "С учётом фигуры и возможных отёков" }
+      ].map(item => ({
+        ...item, section: "Выписка из роддома", category: "Выписка", importance: "Важно", status: "В планах", who: mom, link: "", qty: "1 шт."
+      }));
+
+      const baseOther = [
+        { id: "nr1", section: "Сумка в роддом", category: "Родзал", name: "Свободная рубашка для родов", importance: "Важно" },
+        { id: "nr2", section: "Сумка в роддом", category: "Родзал", name: "Моющиеся тапочки", importance: "Важно" },
+        { id: "nr3", section: "Сумка в роддом", category: "Родзал", name: "Бальзам для губ и резинка для волос", importance: "Важно" },
+        { id: "nr4", section: "Сумка в роддом", category: "Родзал", name: "Вода со спортивным носиком и снеки", importance: "Важно" },
+        { id: "nr5", section: "Сумка в роддом", category: "Родзал", name: "Зарядка с длинным проводом и пауэрбанк", importance: "Важно" },
+        { id: "nr6", section: "Сумка в роддом", category: "Палата", name: "Пижама / сорочка для кормления (2 шт.)", importance: "Важно" },
+        { id: "nr7", section: "Сумка в роддом", category: "Палата", name: "Высокие хлопковые трусики (3–4 шт.)", importance: "Важно" },
+        { id: "nr8", section: "Сумка в роддом", category: "Палата", name: "Косметичка и гигиена без отдушек", importance: "Важно" },
+        { id: "nr9", section: "Сумка в роддом", category: "Палата", name: "Беруши и маска для сна", importance: "По желанию" },
+
+        { id: "nb1", section: "Малыш: уход", category: "Гигиена", name: "Подгузники размера 1 (для новорождённых)", importance: "Важно" },
+        { id: "nb2", section: "Малыш: уход", category: "Гигиена", name: "Муслиновые пелёнки (4–6 шт.)", importance: "Важно" },
+        { id: "nb3", section: "Малыш: уход", category: "Гигиена", name: "Влажные салфетки на водной основе", importance: "Важно" },
+        { id: "nb4", section: "Малыш: уход", category: "Гигиена", name: "Впитывающие пелёнки для смены подгузника", importance: "Важно" },
+        { id: "nb5", section: "Малыш: уход", category: "Аптечка", name: "Цифровой термометр", importance: "Важно" },
+        { id: "nb6", section: "Малыш: уход", category: "Уход", name: "Крем под подгузник", importance: "Нужно после родов" },
+        { id: "nb7", section: "Малыш: уход", category: "Уход", name: "Детские ножницы для ногтей", importance: "Нужно после родов" },
+        { id: "nb8", section: "Малыш: уход", category: "Купание", name: "Ванночка для купания", importance: "Нужно после родов" },
+
+        { id: "nm1", section: "Для мамы: ГВ и гигиена", category: "ГВ", name: "Крем для сосков с ланолином", importance: "Важно" },
+        { id: "nm2", section: "Для мамы: ГВ и гигиена", category: "ГВ", name: "Вкладыши для бюстгальтера", importance: "Важно" },
+        { id: "nm3", section: "Для мамы: ГВ и гигиена", category: "После родов", name: "Послеродовые прокладки", importance: "Важно" },
+        { id: "nm4", section: "Для мамы: ГВ и гигиена", category: "После родов", name: "Высокое послеродовое бельё", importance: "Важно" },
+        { id: "nm5", section: "Для мамы: ГВ и гигиена", category: "ГВ", name: "Молокоотсос", importance: "Нужно после родов" },
+        { id: "nm6", section: "Для мамы: ГВ и гигиена", category: "ГВ", name: "Подушка для кормления", importance: "По желанию" },
+
+        { id: "nh1", section: "Подготовить в доме", category: "Спальня", name: "Спальное место для малыша (приставная кроватка / колыбель)", importance: "Важно" },
+        { id: "nh2", section: "Подготовить в доме", category: "Спальня", name: "Пеленальная зона и органайзер", importance: "Важно" },
+        { id: "nh3", section: "Подготовить в доме", category: "Весь дом", name: "Постирать детскую одежду гипоаллергенным средством", importance: "Важно" },
+        { id: "nh4", section: "Подготовить в доме", category: "Кухня", name: "Сделать заморозки еды на первые недели", importance: "По желанию" }
+      ].map(item => ({ ...item, status: "В планах", who: mom, link: "", notes: "", qty: "" }));
+
+      const need50 = momH <= 162 ? 3 : momH >= 175 ? 1 : 2;
+      const makeSizes = (baseNeed, isOuter = false) => ({
+        "50": { have: 0, need: isOuter ? (momH <= 162 ? 1 : 0) : need50 },
+        "56": { have: 0, need: isOuter ? 1 : baseNeed },
+        "62": { have: 0, need: isOuter ? 1 : baseNeed },
+        "68": { have: 0, need: isOuter ? 1 : baseNeed },
+        "74": { have: 0, need: isOuter ? 1 : baseNeed },
+        "80": { have: 0, need: isOuter ? 1 : baseNeed }
+      });
+
+      const wardrobe = [
+        { id: "nw1", category: "Боди с длинным рукавом (кимоно)", seasonal: climate === "warm" ? "cold" : "all", sizes: makeSizes(3) },
+        ...(isWarmBirth || climate === "warm" ? [{ id: "nw1b", category: "Боди с коротким рукавом / песочники", seasonal: "warm", sizes: makeSizes(3) }] : []),
+        { id: "nw2", category: "Хлопковые слипы (человечки)", seasonal: "all", sizes: makeSizes(3) },
+        { id: "nw3", category: "Штанишки / леггинсы", seasonal: "all", sizes: makeSizes(3) },
+        ...(climate !== "warm" ? [
+          { id: "nw4", category: "Теплый комбинезон (меринос / флис)", seasonal: "cold", sizes: makeSizes(1, true) },
+          { id: "nw5", category: "Тёплая шапочка / чепчик", seasonal: "cold", sizes: makeSizes(1, true) }
+        ] : []),
+        ...(climate === "cold" ? [{ id: "nw4b", category: "Зимний верхний комбинезон / конверт", seasonal: "cold", sizes: makeSizes(1, true) }] : []),
+        ...(isWarmBirth || climate === "warm" ? [{ id: "nw5b", category: "Тонкая хлопковая шапочка / панамка", seasonal: "warm", sizes: makeSizes(1, true) }] : []),
+        { id: "nw6", category: "Носочки (пар)", seasonal: "all", sizes: makeSizes(3) }
+      ];
+
+      return {
+        profile: {
+          momName: mom, partnerName: "Партнёр", babyName: "Малыш",
+          dueDate: dueDate || "2027-03-15", country: country.trim() || "Швейцария", city: city.trim() || "Цюрих",
+          babyGender: "unknown", ultrasoundWeek: 24, ultrasoundWeightGrams: 650,
+          momHeightCm: momH, dadHeightCm: Math.round(momH + 12),
+          urgentContacts: { momPhone: "", dadPhone: "", hospitalName: "", hospitalPhone: "", hospitalAddress: "" },
+          medicalCard: { gestationWeek: "", bloodType: "", allergies: "Нет", chronicConditions: "Нет", medications: "", insuranceNumber: "", doctorAndMidwife: "", deliveryNotes: "" }
+        },
+        checklist: [...docsChecklist, ...dischargeItems, ...baseOther],
+        wardrobe,
+        wishlists: [{ id: "wl_new_1", title: "Baby Shower & Выписка", description: "Подарки для малыша", items: [] }]
+      };
+    }
+
+    function calcPriorityReadiness(items) {
+      const active = items.filter(i => i.status !== "Не нужно");
+      if (active.length === 0) return 100;
+      const important = active.filter(i => i.importance === "Важно");
+      if (important.length > 0) {
+        const doneImp = important.filter(i => i.status === "Куплено" || i.status === "Сделано").length;
+        return Math.round((doneImp / important.length) * 100);
+      }
+      const doneAll = active.filter(i => i.status === "Куплено" || i.status === "Сделано").length;
+      return Math.round((doneAll / active.length) * 100);
+    }
+
+    // Кружок готовности как на IMG_4462_2
+    const ReadinessPill = ({ label, pct }) => (
+      <div className="widget-card px-3.5 py-2.5 flex items-center gap-3 shrink-0">
+        <div>
+          <div className="text-[10px] text-[#75756E] leading-tight">{label}</div>
+          <div className="text-xl font-normal tracking-tight leading-none mt-0.5 text-[#1C1C1A]">
+            {pct}<span className="text-xs align-top ml-0.5">%</span>
+          </div>
+        </div>
+        <div className="w-7 h-7 rounded-full yellow-bright shrink-0" />
+      </div>
+    );
+
+    function App() {
+      const hashParams = useMemo(() => parseHashParams(), []);
+      const [guestWishlistRoomId] = useState(() => hashParams.wishlist || "");
+
+      const [fbUrl, setFbUrl] = useState(() => {
+        if (hashParams.fb) {
+          const clean = normalizeFbUrl(hashParams.fb);
+          localStorage.setItem("iyf_firebase_url", clean);
+          return clean;
+        }
+        return localStorage.getItem("iyf_firebase_url") || "";
+      });
+      const [fbUrlInput, setFbUrlInput] = useState(() => localStorage.getItem("iyf_firebase_url") || "");
+
+      const [familiesIndex, setFamiliesIndex] = useState(() => {
+        try {
+          const idx = localStorage.getItem("iyf_families_v1");
+          return idx ? JSON.parse(idx) : [{ id: "ada_david", label: "Ада & Давид", storageKey: "iyf_data_ada_david", roomKey: "iyf_room_fb_ada_david" }];
+        } catch (e) {
+          return [{ id: "ada_david", label: "Ада & Давид", storageKey: "iyf_data_ada_david", roomKey: "iyf_room_fb_ada_david" }];
+        }
+      });
+
+      const [currentFamilyId, setCurrentFamilyId] = useState(() => {
+        return localStorage.getItem("iyf_active_family") || "ada_david";
+      });
+
+      const currentFamilyMeta = useMemo(() => {
+        const found = familiesIndex.find(f => f.id === currentFamilyId) || familiesIndex[0];
+        return { ...found, roomKey: "iyf_room_fb_" + found.id };
+      }, [familiesIndex, currentFamilyId]);
+
+      const [activeTab, setActiveTab] = useState("checklist");
+      const [data, setData] = useState(() => {
+        try {
+          const saved = localStorage.getItem(currentFamilyMeta.storageKey);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            let mergedChecklist = parsed.checklist || INITIAL_DATA.checklist;
+            if (!parsed._v10ListsMerged) {
+              const existIds = new Set(mergedChecklist.map(i => i.id));
+              const toAdd = INITIAL_DATA.checklist.filter(i => !existIds.has(i.id));
+              if (toAdd.length > 0) mergedChecklist = [...mergedChecklist, ...toAdd];
+            }
+            return {
+              ...INITIAL_DATA,
+              ...parsed,
+              _v10ListsMerged: true,
+              checklist: mergedChecklist,
+              customSections: parsed.customSections || [],
+              profile: {
+                ...INITIAL_DATA.profile,
+                ...(parsed.profile || {}),
+                urgentContacts: { ...INITIAL_DATA.profile.urgentContacts, ...(parsed.profile?.urgentContacts || {}) },
+                medicalCard: { ...INITIAL_DATA.profile.medicalCard, ...(parsed.profile?.medicalCard || {}) }
+              }
+            };
+          }
+          return { ...INITIAL_DATA, _v10ListsMerged: true };
+        } catch (e) { return { ...INITIAL_DATA, _v10ListsMerged: true }; }
+      });
+
+      const [roomId, setRoomId] = useState(() => {
+        if (hashParams.room) {
+          localStorage.setItem(currentFamilyMeta.roomKey, hashParams.room);
+          return hashParams.room;
+        }
+        const saved = localStorage.getItem(currentFamilyMeta.roomKey);
+        if (saved) return saved;
+        const generated = "fam_" + Math.random().toString(36).slice(2, 8);
+        localStorage.setItem(currentFamilyMeta.roomKey, generated);
+        return generated;
+      });
+
+      const [syncStatus, setSyncStatus] = useState("idle");
+      const [lastSyncTime, setLastSyncTime] = useState("");
+      const [joinInput, setJoinInput] = useState("");
+      const [showCodeModal, setShowCodeModal] = useState(false);
+      const [toast, setToast] = useState("");
+      const [medLangEn, setMedLangEn] = useState(false);
+
+      const dataRef = useRef(data);
+      const roomIdRef = useRef(roomId);
+      const fbUrlRef = useRef(fbUrl);
+      const famMetaRef = useRef(currentFamilyMeta);
+      const lastUpdatedRef = useRef(Number(localStorage.getItem(currentFamilyMeta.storageKey + "_ts") || 0));
+      const dirtyRef = useRef(false);
+      const pushTimerRef = useRef(null);
+      const initializedRoomPullRef = useRef(false);
+
+      useEffect(() => { dataRef.current = data; }, [data]);
+      useEffect(() => { roomIdRef.current = roomId; }, [roomId]);
+      useEffect(() => { fbUrlRef.current = fbUrl; }, [fbUrl]);
+      useEffect(() => { famMetaRef.current = currentFamilyMeta; }, [currentFamilyMeta]);
+
+      const notify = useCallback((msg) => {
+        setToast(msg);
+        setTimeout(() => setToast(""), 3200);
+      }, []);
+
+      const formatNow = () => new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+
+      // Запись в Firebase Realtime Database (мгновенно, без CORS-ошибок и лимитов)
+      const pushToCloud = useCallback(async (payload, explicitRoomId = null, explicitFbUrl = null) => {
+        const baseFb = normalizeFbUrl(explicitFbUrl || fbUrlRef.current || localStorage.getItem("iyf_firebase_url") || "");
+        const targetId = guestWishlistRoomId || explicitRoomId || roomIdRef.current || localStorage.getItem(famMetaRef.current.roomKey);
+        if (!baseFb || !targetId) {
+          setSyncStatus("local");
+          return false;
+        }
+        setSyncStatus("syncing");
+        try {
+          const res = await fetch(`${baseFb}/rooms/${encodeURIComponent(targetId)}.json`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          dirtyRef.current = false;
+          setSyncStatus("synced");
+          setLastSyncTime(formatNow());
+          return true;
+        } catch (err) {
+          setSyncStatus("error");
+          return false;
+        }
+      }, [guestWishlistRoomId]);
+
+      // Чтение из Firebase Realtime Database (каждую 1 секунду!)
+      const pullFromCloud = useCallback(async (targetId, forceApply = false, explicitFbUrl = null) => {
+        const baseFb = normalizeFbUrl(explicitFbUrl || fbUrlRef.current || localStorage.getItem("iyf_firebase_url") || "");
+        if (!baseFb || !targetId) return false;
+        try {
+          const res = await fetch(`${baseFb}/rooms/${encodeURIComponent(targetId)}.json`, { cache: "no-store" });
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          const remote = await res.json();
+          if (remote && remote.checklist && remote.profile) {
+            const remoteTs = Number(remote._updatedAt || 0);
+            const shouldApply = forceApply || (!dirtyRef.current && remoteTs > lastUpdatedRef.current);
+            if (shouldApply) {
+              lastUpdatedRef.current = remoteTs || Date.now();
+              const merged = {
+                ...INITIAL_DATA,
+                ...remote,
+                profile: {
+                  ...INITIAL_DATA.profile,
+                  ...(remote.profile || {}),
+                  urgentContacts: { ...INITIAL_DATA.profile.urgentContacts, ...(remote.profile?.urgentContacts || {}) },
+                  medicalCard: { ...INITIAL_DATA.profile.medicalCard, ...(remote.profile?.medicalCard || {}) }
+                }
+              };
+              dataRef.current = merged;
+              setData(merged);
+              if (!guestWishlistRoomId) {
+                localStorage.setItem(famMetaRef.current.storageKey, JSON.stringify(merged));
+                localStorage.setItem(famMetaRef.current.storageKey + "_ts", String(lastUpdatedRef.current));
+              }
+            }
+            setSyncStatus("synced");
+            setLastSyncTime(formatNow());
+            return true;
+          } else if (remote === null && !guestWishlistRoomId) {
+            // Комната в Firebase еще пустая — заливаем туда текущие данные
+            await pushToCloud({ ...dataRef.current, _updatedAt: lastUpdatedRef.current || Date.now() }, targetId, baseFb);
+            return true;
+          }
+        } catch (err) {
+          setSyncStatus("error");
+        }
+        return false;
+      }, [guestWishlistRoomId, pushToCloud]);
+
+      useEffect(() => {
+        let cancelled = false;
+        const startup = async () => {
+          const baseFb = fbUrlRef.current || localStorage.getItem("iyf_firebase_url") || "";
+          if (!baseFb) {
+            setSyncStatus("local");
+            return;
+          }
+          if (guestWishlistRoomId) {
+            await pullFromCloud(guestWishlistRoomId, true, baseFb);
+            return;
+          }
+
+          const activeRoom = roomIdRef.current || localStorage.getItem(currentFamilyMeta.roomKey) || "";
+          if (activeRoom) {
+            const cameFromInviteLink = Boolean(hashParams.room && !initializedRoomPullRef.current);
+            initializedRoomPullRef.current = true;
+            await pullFromCloud(activeRoom, cameFromInviteLink, baseFb);
+          }
+        };
+
+        startup();
+
+        const interval = setInterval(() => {
+          if (cancelled) return;
+          const baseFb = fbUrlRef.current || localStorage.getItem("iyf_firebase_url") || "";
+          const activeId = guestWishlistRoomId || roomIdRef.current || localStorage.getItem(famMetaRef.current.roomKey);
+          if (baseFb && activeId && !dirtyRef.current) {
+            pullFromCloud(activeId, false, baseFb);
+          }
+        }, 1000);
+
+        return () => {
+          cancelled = true;
+          clearInterval(interval);
+        };
+      }, [currentFamilyMeta, guestWishlistRoomId, hashParams.room, fbUrl, pullFromCloud]);
+
+      const persistData = useCallback((updater) => {
+        setData(prev => {
+          const next = typeof updater === "function" ? updater(prev) : updater;
+          const now = Date.now();
+          lastUpdatedRef.current = now;
+          dirtyRef.current = true;
+          const payload = { ...next, _updatedAt: now };
+          dataRef.current = payload;
+
+          if (!guestWishlistRoomId) {
+            try {
+              localStorage.setItem(famMetaRef.current.storageKey, JSON.stringify(payload));
+              localStorage.setItem(famMetaRef.current.storageKey + "_ts", String(now));
+            } catch (e) {}
+          }
+
+          if (fbUrlRef.current) {
+            if (pushTimerRef.current) clearTimeout(pushTimerRef.current);
+            setSyncStatus("syncing");
+            pushTimerRef.current = setTimeout(() => {
+              pushToCloud(dataRef.current);
+            }, 300);
+          }
+
+          return payload;
+        });
+      }, [guestWishlistRoomId, pushToCloud]);
+
+      const handleManualSync = async () => {
+        if (!fbUrlRef.current) {
+          setShowCodeModal(true);
+          notify("Подключите бесплатную базу Firebase в окне «Код»");
+          return;
+        }
+        if (pushTimerRef.current) {
+          clearTimeout(pushTimerRef.current);
+          pushTimerRef.current = null;
+        }
+        const activeId = roomIdRef.current || localStorage.getItem(famMetaRef.current.roomKey);
+        const ok = dirtyRef.current
+          ? await pushToCloud({ ...dataRef.current, _updatedAt: Date.now() }, activeId)
+          : await pullFromCloud(activeId, false);
+        notify(ok ? "Синхронизировано!" : "Проверьте ссылку Firebase и правила доступа (read/write: true)");
+      };
+
+      const saveFirebaseUrl = async () => {
+        const clean = normalizeFbUrl(fbUrlInput);
+        if (!clean || (!clean.includes("firebaseio.com") && !clean.includes("firebasedatabase.app"))) {
+          notify("Вставьте ссылку вида https://...firebasedatabase.app");
+          return;
+        }
+        localStorage.setItem("iyf_firebase_url", clean);
+        fbUrlRef.current = clean;
+        setFbUrl(clean);
+        const ok = await pushToCloud({ ...dataRef.current, _updatedAt: Date.now() }, roomIdRef.current, clean);
+        notify(ok ? "Облако подключено! Синхронизация работает каждую 1 сек." : "Не удалось подключиться — проверьте правила в Firebase");
+      };
+
+      const switchFamilyAccount = async (famId) => {
+        const target = familiesIndex.find(f => f.id === famId);
+        if (!target) return;
+        if (dirtyRef.current && roomIdRef.current) {
+          await pushToCloud(dataRef.current, roomIdRef.current);
+        }
+        dirtyRef.current = false;
+        setCurrentFamilyId(famId);
+        localStorage.setItem("iyf_active_family", famId);
+        try {
+          const raw = localStorage.getItem(target.storageKey);
+          const parsed = raw ? JSON.parse(raw) : INITIAL_DATA;
+          setData(parsed);
+          dataRef.current = parsed;
+          lastUpdatedRef.current = Number(localStorage.getItem(target.storageKey + "_ts") || parsed._updatedAt || 0);
+        } catch (e) {
+          setData(INITIAL_DATA);
+          dataRef.current = INITIAL_DATA;
+        }
+        const rKey = "iyf_room_fb_" + target.id;
+        const targetRoom = localStorage.getItem(rKey) || ("fam_" + Math.random().toString(36).slice(2, 8));
+        localStorage.setItem(rKey, targetRoom);
+        roomIdRef.current = targetRoom;
+        setRoomId(targetRoom);
+        if (fbUrlRef.current) pullFromCloud(targetRoom, false);
+        notify(`Профиль: ${target.label}`);
+      };
+
+      const [showNewFamilyModal, setShowNewFamilyModal] = useState(false);
+      const [newFamForm, setNewFamForm] = useState({
+        momName: "", dueDate: "2027-06-15", country: "Швейцария", city: "Цюрих", momHeightCm: "168"
+      });
+
+      const createFreshFamilyAccount = async (e) => {
+        e.preventDefault();
+        if (!newFamForm.momName.trim()) return;
+        const newId = "fam_" + Date.now();
+        const label = `${newFamForm.momName.trim()} (${newFamForm.city.trim() || newFamForm.country.trim()})`;
+        const newMeta = { id: newId, label, storageKey: "iyf_data_" + newId, roomKey: "iyf_room_fb_" + newId };
+
+        const freshData = buildPersonalizedStarterData(newFamForm);
+        const now = Date.now();
+        freshData._updatedAt = now;
+        freshData._v10ListsMerged = true;
+        freshData.customSections = [];
+
+        const nextIndex = [...familiesIndex, newMeta];
+        setFamiliesIndex(nextIndex);
+        localStorage.setItem("iyf_families_v1", JSON.stringify(nextIndex));
+        localStorage.setItem(newMeta.storageKey, JSON.stringify(freshData));
+        localStorage.setItem(newMeta.storageKey + "_ts", String(now));
+
+        const newRoom = "fam_" + Math.random().toString(36).slice(2, 8);
+        localStorage.setItem(newMeta.roomKey, newRoom);
+
+        setCurrentFamilyId(newId);
+        localStorage.setItem("iyf_active_family", newId);
+        famMetaRef.current = newMeta;
+        lastUpdatedRef.current = now;
+        dirtyRef.current = false;
+        setData(freshData);
+        dataRef.current = freshData;
+        roomIdRef.current = newRoom;
+        setRoomId(newRoom);
+        setShowNewFamilyModal(false);
+
+        if (fbUrlRef.current) await pushToCloud(freshData, newRoom);
+        notify(`Создан профиль: ${label}`);
+      };
+
+      const [selectedSection, setSelectedSection] = useState("Все");
+      const [filterWho, setFilterWho] = useState("Все");
+      const [filterStatus, setFilterStatus] = useState("Все");
+      const [filterPriority, setFilterPriority] = useState("Все");
+      const [searchQuery, setSearchQuery] = useState("");
+      const [expandedItemId, setExpandedItemId] = useState(null);
+      const [showAddModal, setShowAddModal] = useState(false);
+      const [showAddListModal, setShowAddListModal] = useState(false);
+      const [newListName, setNewListName] = useState("");
+
+      const allSectionTiles = useMemo(() => {
+        const custom = (data.customSections || []).map(name => ({ id: name, label: name, isCustom: true }));
+        return [...SECTION_TILES, ...custom];
+      }, [data.customSections]);
+
+      const handleAddNewList = (e) => {
+        e.preventDefault();
+        const trimmed = newListName.trim();
+        if (!trimmed) return;
+        if (allSectionTiles.some(t => t.id.toLowerCase() === trimmed.toLowerCase())) {
+          notify("Список с таким названием уже есть");
+          return;
+        }
+        persistData(prev => ({
+          ...prev,
+          customSections: [...(prev.customSections || []), trimmed]
+        }));
+        setSelectedSection(trimmed);
+        setNewItem(prev => ({ ...prev, section: trimmed }));
+        setNewListName("");
+        setShowAddListModal(false);
+        notify(`Создан список «${trimmed}»`);
+      };
+
+      const [newItem, setNewItem] = useState({
+        section: "Малыш: уход", category: "Покупки", name: "", importance: "Важно",
+        status: "В планах", who: data.profile.momName || "Ада", qty: "1 шт.", notes: "", link: ""
+      });
+
+      const [showAddWardrobeModal, setShowAddWardrobeModal] = useState(false);
+      const [newWardrobeName, setNewWardrobeName] = useState("");
+      const [newWardrobeSeason, setNewWardrobeSeason] = useState("all");
+      const [editingWardrobeId, setEditingWardrobeId] = useState(null);
+
+      const [newWishName, setNewWishName] = useState("");
+      const [newWishPrice, setNewWishPrice] = useState("");
+      const [guestNameInput, setGuestNameInput] = useState("");
+      const [reservingWishId, setReservingWishId] = useState(null);
+      const [expandedWishId, setExpandedWishId] = useState(null);
+
+      const seasonInfo = useMemo(
+        () => getSeasonInfo(data.profile.dueDate, data.profile.country, data.profile.city),
+        [data.profile.dueDate, data.profile.country, data.profile.city]
+      );
+      const birthEstimate = useMemo(() => estimateBirthSize(data.profile), [data.profile]);
+
+      const daysUntilDue = useMemo(() => {
+        if (!data.profile.dueDate) return null;
+        const diff = new Date(data.profile.dueDate) - new Date();
+        return Math.ceil(diff / (1000 * 60 * 60 * 24));
+      }, [data.profile.dueDate]);
+
+      const overallReadiness = useMemo(() => calcPriorityReadiness(data.checklist), [data.checklist]);
+
+      const sectionReadiness = useMemo(() => {
+        if (selectedSection === "Все") return null;
+        return calcPriorityReadiness(data.checklist.filter(i => i.section === selectedSection));
+      }, [data.checklist, selectedSection]);
+
+      const getEffectiveNeed = useCallback((cell, sz) => {
+        if (!cell) return 0;
+        if (Number(sz) < Number(birthEstimate.recommendedSize)) return 0;
+        return Math.max(0, Number(cell.need) || 0);
+      }, [birthEstimate.recommendedSize]);
+
+      const wardrobeFirstMonthReadiness = useMemo(() => {
+        const firstMonthSizes = [birthEstimate.recommendedSize];
+        let totalNeeded = 0;
+        let totalHave = 0;
+        data.wardrobe.forEach(row => {
+          if (row.seasonal === "cold" && (seasonInfo.code === "summer" || seasonInfo.climate === "warm")) return;
+          if (row.seasonal === "warm" && seasonInfo.code === "winter" && seasonInfo.climate !== "warm") return;
+          firstMonthSizes.forEach(sz => {
+            const cell = row.sizes[sz];
+            const effNeed = getEffectiveNeed(cell, sz);
+            if (effNeed > 0) {
+              totalNeeded += effNeed;
+              totalHave += Math.min(cell.have, effNeed);
+            }
+          });
+        });
+        return totalNeeded === 0 ? 100 : Math.round((totalHave / totalNeeded) * 100);
+      }, [data.wardrobe, birthEstimate.recommendedSize, seasonInfo, getEffectiveNeed]);
+
+      const filteredChecklist = useMemo(() => {
+        const filtered = data.checklist.filter(item => {
+          if (selectedSection !== "Все" && item.section !== selectedSection) return false;
+          if (filterWho !== "Все" && (item.who || "Общее") !== filterWho) return false;
+          if (filterPriority !== "Все" && (item.importance || "Важно") !== filterPriority) return false;
+          if (filterStatus === "Осталось" && (item.status === "Куплено" || item.status === "Сделано" || item.status === "Не нужно")) return false;
+          if (filterStatus === "Готово" && item.status !== "Куплено" && item.status !== "Сделано") return false;
+          if (searchQuery.trim()) {
+            const q = searchQuery.toLowerCase();
+            if (!item.name.toLowerCase().includes(q) && !(item.notes || "").toLowerCase().includes(q)) return false;
+          }
+          return true;
+        });
+
+        return [...filtered].sort((a, b) => {
+          const aDone = (a.status === "Куплено" || a.status === "Сделано") ? 1 : 0;
+          const bDone = (b.status === "Куплено" || b.status === "Сделано") ? 1 : 0;
+          if (aDone !== bDone) return aDone - bDone;
+          const prioOrder = { "Важно": 0, "Нужно после родов": 1, "По желанию": 2 };
+          return (prioOrder[a.importance] ?? 1) - (prioOrder[b.importance] ?? 1);
+        });
+      }, [data.checklist, selectedSection, filterWho, filterStatus, filterPriority, searchQuery]);
+
+      const toggleItemDone = (id) => {
+        persistData(prev => ({
+          ...prev,
+          checklist: prev.checklist.map(item => {
+            if (item.id !== id) return item;
+            const isDone = item.status === "Куплено" || item.status === "Сделано";
+            const nextStatus = isDone ? "В планах" : (item.section === "Документы" || item.section === "Подготовить в доме" ? "Сделано" : "Куплено");
+            return { ...item, status: nextStatus };
+          })
+        }));
+      };
+
+      const updateChecklistItemField = (id, field, value) => {
+        persistData(prev => ({
+          ...prev,
+          checklist: prev.checklist.map(item => item.id === id ? { ...item, [field]: value } : item)
+        }));
+      };
+
+      const deleteChecklistItem = (id) => {
+        persistData(prev => ({ ...prev, checklist: prev.checklist.filter(item => item.id !== id) }));
+        notify("Удалено");
+      };
+
+      const handleAddChecklistItem = (e) => {
+        e.preventDefault();
+        if (!newItem.name.trim()) return;
+        persistData(prev => ({ ...prev, checklist: [{ ...newItem, id: "c_" + Date.now() }, ...prev.checklist] }));
+        setNewItem({ ...newItem, name: "", notes: "", link: "" });
+        setShowAddModal(false);
+        notify("Добавлено");
+      };
+
+      const sendChecklistItemToWishlist = (item) => {
+        persistData(prev => ({
+          ...prev,
+          wishlists: prev.wishlists.map((wl, idx) => idx !== 0 ? wl : {
+            ...wl,
+            items: [...wl.items, {
+              id: "wi_" + Date.now(), name: item.name, price: "", shop: "", link: item.link || "",
+              status: "Свободно", reservedBy: "", notes: item.notes || "", sourceChecklistId: item.id
+            }]
+          })
+        }));
+        notify("Отправлено в вишлист для друзей");
+      };
+
+      const updateWardrobeCount = (rowId, size, field, delta) => {
+        persistData(prev => ({
+          ...prev,
+          wardrobe: prev.wardrobe.map(row => {
+            if (row.id !== rowId) return row;
+            const current = row.sizes[size] || { have: 0, need: 0 };
+            return {
+              ...row,
+              sizes: { ...row.sizes, [size]: { ...current, [field]: Math.max(0, current[field] + delta) } }
+            };
+          })
+        }));
+      };
+
+      const renameWardrobeCategory = (rowId, newName) => {
+        persistData(prev => ({
+          ...prev,
+          wardrobe: prev.wardrobe.map(row => row.id === rowId ? { ...row, category: newName } : row)
+        }));
+      };
+
+      const handleAddWardrobeCategory = (e) => {
+        e.preventDefault();
+        if (!newWardrobeName.trim()) return;
+        const defaultNeed = newWardrobeSeason === "all" ? 3 : 1;
+        const newRow = {
+          id: "w_" + Date.now(), category: newWardrobeName.trim(), seasonal: newWardrobeSeason,
+          sizes: Object.fromEntries(SIZES.map(sz => [sz, { have: 0, need: defaultNeed }]))
+        };
+        persistData(prev => ({ ...prev, wardrobe: [...prev.wardrobe, newRow] }));
+        setNewWardrobeName("");
+        setShowAddWardrobeModal(false);
+        notify("Категория добавлена");
+      };
+
+      const { nearShortages, futureShortages } = useMemo(() => {
+        const near = [];
+        const future = [];
+        data.wardrobe.forEach(row => {
+          SIZES.forEach(sz => {
+            const meta = getSizeSeasonMeta(data.profile.dueDate, sz, data.profile.country, data.profile.city);
+            if (row.seasonal === "cold" && (meta.code === "summer" || meta.climate === "warm")) return;
+            if (row.seasonal === "warm" && meta.code === "winter" && meta.climate !== "warm") return;
+
+            const cell = row.sizes[sz];
+            const effNeed = getEffectiveNeed(cell, sz);
+            if (cell && effNeed > cell.have) {
+              const entry = {
+                id: `${row.id}_${sz}`, rowId: row.id, category: row.category,
+                size: sz, missing: effNeed - cell.have, season: meta.label
+              };
+              if (meta.isDistantFuture) future.push(entry);
+              else near.push(entry);
+            }
+          });
+        });
+        return { nearShortages: near, futureShortages: future };
+      }, [data.wardrobe, data.profile.dueDate, data.profile.country, data.profile.city, getEffectiveNeed]);
+
+      const removeShortageNeed = (rowId, size) => {
+        persistData(prev => ({
+          ...prev,
+          wardrobe: prev.wardrobe.map(row => {
+            if (row.id !== rowId) return row;
+            const cur = row.sizes[size] || { have: 0, need: 0 };
+            return { ...row, sizes: { ...row.sizes, [size]: { ...cur, need: cur.have } } };
+          })
+        }));
+        notify("Количество необходимых вещей сокращено");
+      };
+
+      const sendShortageToWishlist = (item) => {
+        persistData(prev => ({
+          ...prev,
+          wishlists: prev.wishlists.map((wl, idx) => idx !== 0 ? wl : {
+            ...wl,
+            items: [...wl.items, {
+              id: "wi_" + Date.now() + Math.random(),
+              name: `${item.category} — р. ${item.size} (${item.missing} шт.)`,
+              price: "", shop: "", link: "", status: "Свободно", reservedBy: "",
+              notes: `Сезон: ${item.season}`, sourceWardrobe: { rowId: item.rowId, size: item.size }
+            }]
+          })
+        }));
+        notify(`Добавлено в вишлист: ${item.category}`);
+      };
+
+      const allWishlistItems = useMemo(() => {
+        const list = [];
+        (data.wishlists || []).forEach(wl => {
+          (wl.items || []).forEach(it => {
+            list.push({ ...it, _wlId: wl.id });
+          });
+        });
+        return list;
+      }, [data.wishlists]);
+
+      const addWishlistItem = (e) => {
+        e.preventDefault();
+        if (!newWishName.trim()) return;
+        persistData(prev => {
+          const targetList = prev.wishlists && prev.wishlists.length > 0
+            ? prev.wishlists
+            : [{ id: "wl1", title: "Общий вишлист", description: "", items: [] }];
+          return {
+            ...prev,
+            wishlists: targetList.map((wl, idx) => idx !== 0 ? wl : {
+              ...wl,
+              items: [{
+                id: "wi_" + Date.now(), name: newWishName.trim(), price: newWishPrice.trim(),
+                shop: "", link: "", status: "Свободно", reservedBy: "", notes: ""
+              }, ...wl.items]
+            })
+          };
+        });
+        setNewWishName("");
+        setNewWishPrice("");
+        notify("Подарок добавлен");
+      };
+
+      const updateWishlistItemField = (wlId, itemId, field, value) => {
+        persistData(prev => ({
+          ...prev,
+          wishlists: prev.wishlists.map(wl => wl.id !== wlId ? wl : {
+            ...wl,
+            items: wl.items.map(it => it.id === itemId ? { ...it, [field]: value } : it)
+          })
+        }));
+      };
+
+      const reserveWishlistItem = (wlId, itemId, friendName) => {
+        persistData(prev => {
+          let targetWish = null;
+          const updatedWishlists = prev.wishlists.map(wl => {
+            if (wl.id !== wlId) return wl;
+            return {
+              ...wl,
+              items: wl.items.map(it => {
+                if (it.id !== itemId) return it;
+                targetWish = it;
+                return { ...it, status: "Забронировано", reservedBy: friendName || "Друг семьи" };
+              })
+            };
+          });
+
+          let updatedChecklist = prev.checklist;
+          if (targetWish && targetWish.sourceChecklistId) {
+            updatedChecklist = prev.checklist.map(c =>
+              c.id === targetWish.sourceChecklistId ? { ...c, status: "Куплено" } : c
+            );
+          }
+
+          let updatedWardrobe = prev.wardrobe;
+          if (targetWish && targetWish.sourceWardrobe) {
+            const { rowId, size } = targetWish.sourceWardrobe;
+            updatedWardrobe = prev.wardrobe.map(row => {
+              if (row.id !== rowId) return row;
+              const cur = row.sizes[size] || { have: 0, need: 1 };
+              return { ...row, sizes: { ...row.sizes, [size]: { ...cur, have: cur.have + 1 } } };
+            });
+          }
+
+          return { ...prev, wishlists: updatedWishlists, checklist: updatedChecklist, wardrobe: updatedWardrobe };
+        });
+        setReservingWishId(null);
+        setGuestNameInput("");
+        notify("Подарок забронирован!");
+      };
+
+      const deleteWishlistItemOwner = (wlId, item) => {
+        persistData(prev => {
+          const updatedWishlists = prev.wishlists.map(wl =>
+            wl.id === wlId ? { ...wl, items: wl.items.filter(it => it.id !== item.id) } : wl
+          );
+
+          let updatedChecklist = prev.checklist;
+          if (item.sourceChecklistId) {
+            updatedChecklist = prev.checklist.map(c =>
+              c.id === item.sourceChecklistId ? { ...c, status: "В планах" } : c
+            );
+          }
+
+          let updatedWardrobe = prev.wardrobe;
+          if (item.sourceWardrobe && item.status !== "Свободно") {
+            const { rowId, size } = item.sourceWardrobe;
+            updatedWardrobe = prev.wardrobe.map(row => {
+              if (row.id !== rowId) return row;
+              const cur = row.sizes[size] || { have: 0, need: 1 };
+              return { ...row, sizes: { ...row.sizes, [size]: { ...cur, have: Math.max(0, cur.have - 1) } } };
+            });
+          }
+
+          return { ...prev, wishlists: updatedWishlists, checklist: updatedChecklist, wardrobe: updatedWardrobe };
+        });
+        notify("Удалено и возвращено в список покупок");
+      };
+
+      const shareUrlNativeOrCopy = async (url, title, copyMsg) => {
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, url });
+            return;
+          } catch (e) {}
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          notify(copyMsg);
+        } catch (e) {
+          notify("Ссылка: " + url);
+        }
+      };
+
+      const shareFamilyLink = async () => {
+        const activeId = roomIdRef.current || localStorage.getItem(famMetaRef.current.roomKey);
+        const baseFb = fbUrlRef.current || localStorage.getItem("iyf_firebase_url") || "";
+        if (!baseFb) {
+          setShowCodeModal(true);
+          notify("Сначала подключите Firebase в окне «Код», чтобы синхронизировать устройства");
+          return;
+        }
+        await pushToCloud({ ...dataRef.current, _updatedAt: Date.now() }, activeId, baseFb);
+        const baseUrl = window.location.href.split("#")[0];
+        const link = `${baseUrl}#room=${encodeURIComponent(activeId)}&fb=${encodeURIComponent(baseFb)}`;
+        shareUrlNativeOrCopy(
+          link,
+          `Is this your first? — ${data.profile.momName} & ${data.profile.partnerName}`,
+          "Ссылка скопирована! Откройте её 1 раз на втором устройстве."
+        );
+      };
+
+      const shareGuestWishlistLink = async () => {
+        const activeId = roomIdRef.current || localStorage.getItem(famMetaRef.current.roomKey);
+        const baseFb = fbUrlRef.current || localStorage.getItem("iyf_firebase_url") || "";
+        if (!baseFb) {
+          setShowCodeModal(true);
+          notify("Сначала подключите Firebase в окне «Код»");
+          return;
+        }
+        await pushToCloud({ ...dataRef.current, _updatedAt: Date.now() }, activeId, baseFb);
+        const baseUrl = window.location.href.split("#")[0];
+        const link = `${baseUrl}#wishlist=${encodeURIComponent(activeId)}&fb=${encodeURIComponent(baseFb)}`;
+        shareUrlNativeOrCopy(
+          link,
+          "Варианты подарков",
+          "Ссылка на вишлист для друзей скопирована!"
+        );
+      };
+
+      const connectToRoom = async () => {
+        const raw = joinInput.trim();
+        if (!raw) return;
+        let targetRoom = raw;
+        let targetFb = fbUrlRef.current;
+
+        if (raw.includes("#")) {
+          const hashPart = raw.split("#")[1];
+          const params = new URLSearchParams(hashPart);
+          if (params.get("room")) targetRoom = params.get("room").trim();
+          if (params.get("fb")) {
+            targetFb = normalizeFbUrl(params.get("fb"));
+            localStorage.setItem("iyf_firebase_url", targetFb);
+            fbUrlRef.current = targetFb;
+            setFbUrl(targetFb);
+            setFbUrlInput(targetFb);
+          }
+        }
+
+        if (!targetFb) {
+          notify("Сначала вставьте ссылку Firebase выше или вставьте полную ссылку из «Поделиться»");
+          return;
+        }
+
+        localStorage.setItem(famMetaRef.current.roomKey, targetRoom);
+        roomIdRef.current = targetRoom;
+        setRoomId(targetRoom);
+        dirtyRef.current = false;
+        const ok = await pullFromCloud(targetRoom, true, targetFb);
+        setJoinInput("");
+        if (ok) {
+          setShowCodeModal(false);
+          notify("Устройства связаны! Обновление каждую 1 сек.");
+        } else {
+          notify("Не удалось загрузить данные — проверьте код и ссылку Firebase.");
+        }
+      };
+
+      // ========================================================================
+      // ГОСТЕВОЙ ВИШЛИСТ ДЛЯ ДРУЗЕЙ
+      // ========================================================================
+      if (guestWishlistRoomId) {
+        return (
+          <div className="app-shell max-w-xl mx-auto px-4 py-8">
+            {toast && (
+              <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#1C1C1A] text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg">
+                {toast}
+              </div>
+            )}
+
+            <div className="yellow-soft rounded-[28px] p-6 mb-5 space-y-2">
+              <div className="text-xs font-medium text-[#75756E]">Is this your first?</div>
+              <h1 className="text-2xl font-semibold tracking-tight">Варианты подарков</h1>
+              {data.wishlistNote && (
+                <p className="text-xs text-[#1C1C1A] bg-white/75 rounded-2xl p-3 leading-relaxed whitespace-pre-line">
+                  {data.wishlistNote}
+                </p>
+              )}
+              <p className="text-[11px] text-[#5C5C56]">
+                Нажмите «Забронировать», чтобы другие гости знали, что подарок уже выбран.
+              </p>
+            </div>
+
+            <div className="space-y-2.5">
+              {allWishlistItems.map(it => {
+                const isReserved = it.status === "Забронировано" || it.status === "Подарено";
+                const linkHref = it.link && it.link.trim()
+                  ? (it.link.trim().startsWith("http") ? it.link.trim() : "https://" + it.link.trim())
+                  : "";
+                return (
+                  <div key={it.id} className={`widget-card-white p-4 transition ${isReserved ? "opacity-55" : "opacity-100"}`}>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-medium">{it.name}</div>
+                        {(it.price || it.shop) && (
+                          <div className="text-xs text-[#75756E] font-medium mt-0.5">
+                            {[it.price, it.shop].filter(Boolean).join(" • ")}
+                          </div>
+                        )}
+                        {it.notes && <div className="text-xs text-[#75756E] mt-1">{it.notes}</div>}
+                        {linkHref && (
+                          <a href={linkHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-medium underline mt-1.5 text-[#1C1C1A]">
+                            <Icon name="link" className="w-3.5 h-3.5" />
+                            <span>Открыть ссылку</span>
+                          </a>
+                        )}
+                      </div>
+
+                      {!isReserved ? (
+                        <button
+                          onClick={() => setReservingWishId(it.id)}
+                          className="px-4 py-2 rounded-full yellow-bright text-xs font-semibold shrink-0 active:scale-95 transition"
+                        >
+                          Забронировать
+                        </button>
+                      ) : (
+                        <span className="px-3 py-1.5 rounded-full bg-[#EAEAE3] text-[#5C5C56] text-xs font-medium shrink-0">
+                          {it.status} {it.reservedBy ? `(${it.reservedBy})` : ""}
+                        </span>
+                      )}
+                    </div>
+
+                    {reservingWishId === it.id && (
+                      <div className="mt-3 pt-3 flex gap-2">
+                        <input
+                          type="text"
+                          value={guestNameInput}
+                          onChange={(e) => setGuestNameInput(e.target.value)}
+                          placeholder="Ваше имя (необязательно)..."
+                          className="uniform-input !bg-[#F4F4F0] flex-1"
+                        />
+                        <button
+                          onClick={() => reserveWishlistItem(it._wlId, it.id, guestNameInput)}
+                          className="px-4 h-[42px] bg-[#1C1C1A] text-white rounded-2xl text-xs font-semibold shrink-0"
+                        >
+                          ОК
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      }
+
+      // ========================================================================
+      // ОСНОВНОЕ ПРИЛОЖЕНИЕ ДЛЯ СЕМЬИ
+      // ========================================================================
+      const syncDotColor =
+        syncStatus === "synced" ? "#4CAF50" :
+        syncStatus === "syncing" ? "#FCE96A" :
+        syncStatus === "error" ? "#E57373" : "#A8A8A0";
+
+      const urgent = data.profile.urgentContacts || {};
+      const med = data.profile.medicalCard || {};
+
+      return (
+        <div className="app-shell max-w-2xl mx-auto px-4 pt-5 pb-28">
+          {toast && (
+            <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#1C1C1A] text-[#F4F4F0] text-xs font-medium px-4 py-2.5 rounded-full shadow-lg text-center max-w-[90%]">
+              {toast}
+            </div>
+          )}
+
+          {/* Шапка */}
+          <header className="mb-3">
+            <div className="flex items-center justify-between gap-2 mb-3.5">
+              <div className="flex items-center gap-2 min-w-0">
+                <Icon name="dots" className="w-7 h-7 text-[#1C1C1A] shrink-0" />
+                <div className="min-w-0">
+                  <div className="text-xs font-semibold text-[#1C1C1A] tracking-tight truncate">Is this your first?</div>
+                  <div className="text-[11px] text-[#75756E] truncate">
+                    {data.profile.momName} & {data.profile.partnerName}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1.5 shrink-0">
+                {/* Отдельная кнопка «Код семьи» всегда на виду */}
+                <button
+                  onClick={() => setShowCodeModal(true)}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#EAEAE3] text-[11px] font-medium text-[#1C1C1A] active:scale-95 transition"
+                >
+                  <Icon name="key" className="w-3.5 h-3.5 text-[#5C5C56]" />
+                  <span>Код</span>
+                </button>
+
+                <button
+                  onClick={handleManualSync}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EAEAE3] text-[11px] font-medium text-[#1C1C1A] active:scale-95 transition"
+                  title={lastSyncTime ? `Синхронизировано: ${lastSyncTime}` : "Синхронизировать"}
+                >
+                  <span style={{ backgroundColor: syncDotColor }} className={`w-2 h-2 rounded-full ${syncStatus === "syncing" ? "animate-pulse" : ""}`} />
+                  <Icon name="sync" className={`w-3.5 h-3.5 text-[#5C5C56] ${syncStatus === "syncing" ? "animate-spin" : ""}`} />
+                </button>
+
+                <button
+                  onClick={shareFamilyLink}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EAEAE3] text-[11px] font-medium text-[#1C1C1A] active:scale-95 transition"
+                >
+                  <span>Поделиться</span>
+                  <Icon name="copy" className="w-3 h-3 text-[#75756E]" />
+                </button>
+              </div>
+            </div>
+
+            {/* Компактная плашка срочных контактных данных (видна на каждой вкладке) */}
+            <div className="widget-card px-3.5 py-2.5 mb-4 flex items-center justify-between gap-2 text-[11px] overflow-x-auto no-scrollbar">
+              <div className="flex items-center gap-3 shrink-0">
+                {urgent.momPhone && (
+                  <a href={`tel:${urgent.momPhone}`} className="flex items-center gap-1 text-[#1C1C1A] hover:underline">
+                    <Icon name="phone" className="w-3 h-3 text-[#75756E]" />
+                    <span className="text-[#75756E]">{data.profile.momName}:</span>
+                    <span className="font-medium">{urgent.momPhone}</span>
+                  </a>
+                )}
+                {urgent.dadPhone && (
+                  <a href={`tel:${urgent.dadPhone}`} className="flex items-center gap-1 text-[#1C1C1A] hover:underline">
+                    <Icon name="phone" className="w-3 h-3 text-[#75756E]" />
+                    <span className="text-[#75756E]">{data.profile.partnerName}:</span>
+                    <span className="font-medium">{urgent.dadPhone}</span>
+                  </a>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2.5 shrink-0 pl-2.5">
+                {urgent.hospitalPhone && (
+                  <a href={`tel:${urgent.hospitalPhone}`} className="flex items-center gap-1 text-[#1C1C1A] hover:underline">
+                    <Icon name="phone" className="w-3 h-3 text-[#75756E]" />
+                    <span className="text-[#75756E]">Роддом:</span>
+                    <span className="font-medium">{urgent.hospitalPhone}</span>
+                  </a>
+                )}
+                {urgent.hospitalAddress && (
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(urgent.hospitalAddress)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[#1C1C1A] hover:underline max-w-[190px] truncate"
+                  >
+                    <Icon name="mapPin" className="w-3 h-3 text-[#75756E] shrink-0" />
+                    <span className="truncate">{urgent.hospitalAddress}</span>
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Заголовок + кружки готовности */}
+            <div className="flex items-end justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs text-[#75756E] mb-0.5 truncate">
+                  {data.profile.city} • {seasonInfo.name} {daysUntilDue > 0 ? `• ~${daysUntilDue} дн. до ПДР` : ""}
+                </p>
+                <h1 className="text-3xl font-normal tracking-tight text-[#1C1C1A] truncate">
+                  {activeTab === "checklist" && (selectedSection === "Все" ? "Списки" : selectedSection)}
+                  {activeTab === "wardrobe" && "Гардероб"}
+                  {activeTab === "wishlists" && "Вишлист"}
+                  {activeTab === "profile" && "Семья"}
+                </h1>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                {activeTab === "checklist" && sectionReadiness !== null && (
+                  <ReadinessPill label="Раздел" pct={sectionReadiness} />
+                )}
+                {activeTab === "wardrobe" && (
+                  <ReadinessPill label="1-й мес." pct={wardrobeFirstMonthReadiness} />
+                )}
+                <ReadinessPill label="Готовность" pct={overallReadiness} />
+              </div>
+            </div>
+          </header>
+
+          {/* ==================================================================== */}
+          {/* 1. ВКЛАДКА СПИСКИ                                                    */}
+          {/* ==================================================================== */}
+          {activeTab === "checklist" && (
+            <div className="space-y-4">
+              {/* Разделы меню: плоские, без градиентов и обводок */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {allSectionTiles.map(tile => {
+                  const isSelected = selectedSection === tile.id;
+                  return (
+                    <button
+                      key={tile.id}
+                      onClick={() => {
+                        setSelectedSection(tile.id);
+                        if (tile.id !== "Все") setNewItem(prev => ({ ...prev, section: tile.id }));
+                      }}
+                      className={`rounded-[22px] px-4 py-3.5 text-left transition ${
+                        isSelected
+                          ? "yellow-soft font-semibold"
+                          : "bg-[#EAEAE3] text-[#1C1C1A] font-medium"
+                      }`}
+                    >
+                      <div className="text-[13px] leading-snug">{tile.label}</div>
+                    </button>
+                  );
+                })}
+                <button
+                  onClick={() => setShowAddListModal(true)}
+                  className="rounded-[22px] px-4 py-3.5 text-left bg-white/75 text-[#75756E] font-medium flex items-center gap-1.5 transition active:scale-95"
+                >
+                  <Icon name="plus" className="w-4 h-4 shrink-0" />
+                  <span className="text-[13px] leading-snug">Новый список</span>
+                </button>
+              </div>
+
+              {/* Поиск + добавление */}
+              <div className="flex gap-2">
+                <div className="relative flex-1">
+                  <Icon name="search" className="w-4 h-4 text-[#75756E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Поиск по вещам и документам..."
+                    className="w-full h-[44px] pl-10 pr-4 bg-[#EAEAE3] rounded-2xl text-xs placeholder-[#75756E] focus:outline-none focus:bg-white transition"
+                  />
+                </div>
+                <button
+                  onClick={() => setShowAddModal(true)}
+                  className="w-[44px] h-[44px] rounded-2xl yellow-bright flex items-center justify-center shrink-0 active:scale-95 transition"
+                >
+                  <Icon name="plus" className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Фильтры */}
+              <div className="space-y-2 text-[11px]">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex gap-1 bg-[#EAEAE3] p-1 rounded-full">
+                    {["Все", "Осталось", "Готово"].map(st => (
+                      <button
+                        key={st}
+                        onClick={() => setFilterStatus(st)}
+                        className={`px-3 py-1 rounded-full transition ${
+                          filterStatus === st ? "bg-white text-[#1C1C1A] font-medium" : "text-[#75756E]"
+                        }`}
+                      >
+                        {st}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-1 bg-[#EAEAE3] p-1 rounded-full">
+                    {["Все", data.profile.momName || "Ада", data.profile.partnerName || "Давид"].map(who => (
+                      <button
+                        key={who}
+                        onClick={() => setFilterWho(who)}
+                        className={`px-3 py-1 rounded-full transition ${
+                          filterWho === who ? "bg-white text-[#1C1C1A] font-medium" : "text-[#75756E]"
+                        }`}
+                      >
+                        {who}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-1.5 overflow-x-auto no-scrollbar">
+                  {["Все", ...PRIORITIES].map(pr => (
+                    <button
+                      key={pr}
+                      onClick={() => setFilterPriority(pr)}
+                      className={`px-3 py-1.5 rounded-full transition whitespace-nowrap ${
+                        filterPriority === pr
+                          ? "bg-white text-[#1C1C1A] font-medium"
+                          : "bg-[#EAEAE3] text-[#75756E]"
+                      }`}
+                    >
+                      {pr === "Все" ? "Любой приоритет" : pr}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Карточки задач */}
+              <div className="space-y-2.5 pt-1">
+                {filteredChecklist.map(item => {
+                  const isDone = item.status === "Куплено" || item.status === "Сделано";
+                  const isExpanded = expandedItemId === item.id;
+                  const isImportant = (item.importance || "Важно") === "Важно";
+                  const isUrl = item.link && item.link.startsWith("http");
+
+                  const cardOpacity = isDone ? "opacity-55" : isImportant ? "opacity-100" : "opacity-65";
+
+                  return (
+                    <div key={item.id} className={`widget-card-white p-4 transition ${cardOpacity}`}>
+                      <div className="flex items-start justify-between gap-3">
+                        <div
+                          onClick={() => setExpandedItemId(isExpanded ? null : item.id)}
+                          className="flex-1 min-w-0 cursor-pointer"
+                        >
+                          <div className="flex items-center gap-2 text-[11px] text-[#75756E] mb-1">
+                            <span>{item.section}</span>
+                            {item.importance && item.importance !== "Важно" && <span>• {item.importance}</span>}
+                            {item.who && <span>• {item.who}</span>}
+                          </div>
+
+                          <h3 className={`text-[15px] font-medium leading-snug ${isDone ? "line-through text-[#75756E]" : "text-[#1C1C1A]"}`}>
+                            {item.name}
+                          </h3>
+
+                          {!isExpanded && item.notes && (
+                            <p className="text-xs text-[#75756E] mt-1 line-clamp-2">{item.notes}</p>
+                          )}
+
+                          {!isExpanded && isUrl && (
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center gap-1 text-xs text-[#1C1C1A] font-medium underline mt-1.5 opacity-80"
+                            >
+                              <Icon name="link" className="w-3.5 h-3.5" />
+                              <span>Открыть ссылку</span>
+                            </a>
+                          )}
+                        </div>
+
+                        {/* Бесцветный тумблер на выполненных, лимонный кружок на невыполненных */}
+                        <button
+                          onClick={() => toggleItemDone(item.id)}
+                          className={`w-12 h-7 rounded-full p-1 transition-colors flex items-center shrink-0 ${
+                            isDone ? "bg-[#DEDED6] justify-end" : "bg-[#EAEAE3] justify-start"
+                          }`}
+                        >
+                          <div className={`w-5 h-5 rounded-full transition-colors ${
+                            isDone ? "bg-[#F4F4F0]" : "yellow-bright"
+                          }`} />
+                        </button>
+                      </div>
+
+                      {isExpanded && (
+                        <div className="mt-3.5 pt-3.5 space-y-2.5 text-xs">
+                          <div>
+                            <label className="block text-[10px] text-[#75756E] mb-1">Заголовок задачи</label>
+                            <input
+                              type="text"
+                              value={item.name}
+                              onChange={(e) => updateChecklistItemField(item.id, "name", e.target.value)}
+                              className="uniform-input !bg-[#F4F4F0] font-medium"
+                            />
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-2">
+                            <div className="min-w-0">
+                              <label className="block text-[10px] text-[#75756E] mb-1">Приоритет</label>
+                              <select
+                                value={item.importance || "Важно"}
+                                onChange={(e) => updateChecklistItemField(item.id, "importance", e.target.value)}
+                                className="uniform-input !bg-[#F4F4F0]"
+                              >
+                                {PRIORITIES.map(p => <option key={p} value={p}>{p}</option>)}
+                              </select>
+                            </div>
+                            <div className="min-w-0">
+                              <label className="block text-[10px] text-[#75756E] mb-1">Ответственный</label>
+                              <input
+                                type="text"
+                                value={item.who || ""}
+                                onChange={(e) => updateChecklistItemField(item.id, "who", e.target.value)}
+                                className="uniform-input !bg-[#F4F4F0]"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="block text-[10px] text-[#75756E] mb-1">Комментарий</label>
+                            <textarea
+                              rows="2"
+                              value={item.notes || ""}
+                              onChange={(e) => updateChecklistItemField(item.id, "notes", e.target.value)}
+                              placeholder="Добавить заметку..."
+                              className="w-full px-3 py-2 bg-[#F4F4F0] rounded-2xl text-xs focus:outline-none"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-[10px] text-[#75756E] mb-1">Ссылка на товар / документ</label>
+                            <input
+                              type="text"
+                              value={item.link || ""}
+                              onChange={(e) => updateChecklistItemField(item.id, "link", e.target.value)}
+                              placeholder="https://..."
+                              className="uniform-input !bg-[#F4F4F0]"
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-between pt-1">
+                            <button
+                              onClick={() => sendChecklistItemToWishlist(item)}
+                              className="px-3.5 py-2 rounded-full yellow-soft font-medium"
+                            >
+                              + В вишлист для друзей
+                            </button>
+
+                            <button
+                              onClick={() => deleteChecklistItem(item.id)}
+                              className="px-3 py-1.5 rounded-full text-rose-600 flex items-center gap-1"
+                            >
+                              <Icon name="trash" className="w-3.5 h-3.5" />
+                              <span>Удалить</span>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* ==================================================================== */}
+          {/* 2. ВКЛАДКА ГАРДЕРОБ (плоские цвета как на IMG_4462_2, без обводок)   */}
+          {/* ==================================================================== */}
+          {activeTab === "wardrobe" && (
+            <div className="space-y-4">
+              <div className="widget-card p-4 space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div>
+                    <div className="text-xs font-semibold">Прогноз размера при рождении</div>
+                    <div className="text-[11px] text-[#75756E]">По данным скрининга и росту родителей</div>
+                  </div>
+                  <div className="text-right yellow-soft px-3 py-1.5 rounded-2xl shrink-0">
+                    <div className="text-[10px] text-[#75756E]">Ожидаемый размер</div>
+                    <div className="text-xs font-bold text-[#1C1C1A]">
+                      р. {birthEstimate.recommendedSize} (~{birthEstimate.estLength} см / {birthEstimate.estBirthWeight} г)
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 text-[11px]">
+                  <div className="min-w-0">
+                    <label className="block text-[#75756E] mb-1">Пол</label>
+                    <select
+                      value={data.profile.babyGender || "unknown"}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, babyGender: e.target.value } }))}
+                      className="uniform-input"
+                    >
+                      <option value="unknown">Сюрприз</option>
+                      <option value="boy">Мальчик</option>
+                      <option value="girl">Девочка</option>
+                    </select>
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[#75756E] mb-1">Неделя УЗИ</label>
+                    <input
+                      type="number"
+                      value={data.profile.ultrasoundWeek || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, ultrasoundWeek: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[#75756E] mb-1">Вес УЗИ (г)</label>
+                    <input
+                      type="number"
+                      value={data.profile.ultrasoundWeightGrams || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, ultrasoundWeightGrams: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[#75756E] mb-1">Рост мамы</label>
+                    <input
+                      type="number"
+                      value={data.profile.momHeightCm || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, momHeightCm: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[#75756E] mb-1">Рост папы</label>
+                    <input
+                      type="number"
+                      value={data.profile.dadHeightCm || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, dadHeightCm: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="widget-card p-4">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <div className="text-xs text-[#75756E]">
+                    Нажимайте + или −, чтобы обновлять наличие. Стартовый размер <span className="font-semibold text-[#1C1C1A]">р. {birthEstimate.recommendedSize}</span> выделен.
+                  </div>
+                  <button
+                    onClick={() => setShowAddWardrobeModal(true)}
+                    className="px-3.5 py-2 rounded-full bg-white text-[#1C1C1A] text-xs font-medium shrink-0"
+                  >
+                    + Категория
+                  </button>
+                </div>
+
+                <div className="overflow-x-auto -mx-4 px-4">
+                  <table className="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                      <tr className="text-[11px] text-[#75756E]">
+                        <th className="py-2 pr-3 font-medium">Вещь</th>
+                        {SIZES.map(sz => {
+                          const meta = getSizeSeasonMeta(data.profile.dueDate, sz, data.profile.country, data.profile.city);
+                          const isRec = sz === birthEstimate.recommendedSize;
+                          return (
+                            <th
+                              key={sz}
+                              className={`py-2 px-1 text-center font-medium rounded-t-2xl ${
+                                isRec ? "bg-[#EDF5A6]/60 text-[#1C1C1A]" : meta.isDistantFuture ? "opacity-45" : ""
+                              }`}
+                            >
+                              <div className="text-xs text-[#1C1C1A] font-semibold">р. {sz}</div>
+                              <div className="text-[10px] opacity-75">{meta.label}</div>
+                            </th>
+                          );
+                        })}
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs">
+                      {data.wardrobe.map(row => (
+                        <tr key={row.id}>
+                          <td className="py-2.5 pr-3 font-medium">
+                            {editingWardrobeId === row.id ? (
+                              <input
+                                type="text"
+                                autoFocus
+                                value={row.category}
+                                onBlur={() => setEditingWardrobeId(null)}
+                                onChange={(e) => renameWardrobeCategory(row.id, e.target.value)}
+                                className="w-full px-2.5 py-1.5 bg-white rounded-xl text-xs"
+                              />
+                            ) : (
+                              <div
+                                onClick={() => setEditingWardrobeId(row.id)}
+                                className="cursor-pointer hover:opacity-75 flex items-center gap-1"
+                              >
+                                <span>{row.category}</span>
+                                <Icon name="edit" className="w-3 h-3 opacity-35 shrink-0" />
+                              </div>
+                            )}
+                          </td>
+
+                          {SIZES.map(sz => {
+                            const meta = getSizeSeasonMeta(data.profile.dueDate, sz, data.profile.country, data.profile.city);
+                            const isRec = sz === birthEstimate.recommendedSize;
+                            const notNeededForSeason =
+                              (row.seasonal === "cold" && (meta.code === "summer" || meta.climate === "warm")) ||
+                              (row.seasonal === "warm" && meta.code === "winter" && meta.climate !== "warm");
+
+                            if (notNeededForSeason) {
+                              return (
+                                <td key={sz} className={`py-2 px-1 text-center ${isRec ? "bg-[#EDF5A6]/40" : ""}`}>
+                                  <span className="text-[10px] text-[#75756E]/50">—</span>
+                                </td>
+                              );
+                            }
+
+                            const cell = row.sizes[sz] || { have: 0, need: 3 };
+                            const effNeed = getEffectiveNeed(cell, sz);
+                            const complete = effNeed > 0 && cell.have >= effNeed;
+
+                            return (
+                              <td
+                                key={sz}
+                                className={`py-2 px-1 text-center ${isRec ? "bg-[#EDF5A6]/40" : ""} ${meta.isDistantFuture ? "opacity-45" : ""}`}
+                              >
+                                <div className={`rounded-2xl p-1.5 ${complete ? "yellow-soft" : "bg-white"}`}>
+                                  <div className="flex items-center justify-center gap-1">
+                                    <button onClick={() => updateWardrobeCount(row.id, sz, "have", -1)} className="w-5 h-5 rounded-full bg-[#EAEAE3] text-xs">-</button>
+                                    <span className="font-semibold min-w-[14px]">{cell.have}</span>
+                                    <button onClick={() => updateWardrobeCount(row.id, sz, "have", 1)} className="w-5 h-5 rounded-full bg-[#EAEAE3] text-xs">+</button>
+                                  </div>
+                                  <div className="text-[10px] text-[#75756E] mt-1">из {effNeed}</div>
+                                </div>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="widget-card-white p-4 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium">Нужно докупить (ближайшие 2 сезона)</span>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full yellow-bright font-medium">
+                    {nearShortages.length}
+                  </span>
+                </div>
+
+                {nearShortages.length === 0 ? (
+                  <p className="text-xs text-[#75756E]">Базовые вещи на ближайшие полгода собраны!</p>
+                ) : (
+                  nearShortages.map(sh => (
+                    <div key={sh.id} className="flex items-center justify-between gap-2 p-3 rounded-2xl bg-[#F4F4F0] text-xs">
+                      <div>
+                        <div className="font-medium">{sh.category} • р. {sh.size} ({sh.missing} шт.)</div>
+                        <div className="text-[11px] text-[#75756E]">{sh.season}</div>
+                      </div>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <button
+                          onClick={() => sendShortageToWishlist(sh)}
+                          className="px-3 py-1.5 rounded-full yellow-soft text-[11px] font-medium"
+                        >
+                          + В вишлист
+                        </button>
+                        <button
+                          onClick={() => removeShortageNeed(sh.rowId, sh.size)}
+                          className="p-1.5 rounded-full bg-white text-[#75756E] hover:text-rose-600"
+                          title="Убрать из списка покупок (сократить норму)"
+                        >
+                          <Icon name="trash" className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {futureShortages.length > 0 && (
+                <div className="widget-card-white p-4 space-y-2.5 opacity-60">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-[#5C5C56]">На далёкое будущее (через 6+ мес.)</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAEAE3] text-[#5C5C56]">
+                      {futureShortages.length}
+                    </span>
+                  </div>
+
+                  {futureShortages.map(sh => (
+                    <div key={sh.id} className="flex items-center justify-between gap-2 p-2.5 rounded-2xl bg-[#F4F4F0] text-xs">
+                      <div>
+                        <div className="font-medium">{sh.category} • р. {sh.size} ({sh.missing} шт.)</div>
+                        <div className="text-[11px] text-[#75756E]">{sh.season}</div>
+                      </div>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <button
+                          onClick={() => sendShortageToWishlist(sh)}
+                          className="px-3 py-1 rounded-full bg-white text-[11px] font-medium"
+                        >
+                          + В вишлист
+                        </button>
+                        <button
+                          onClick={() => removeShortageNeed(sh.rowId, sh.size)}
+                          className="p-1.5 rounded-full bg-white text-[#75756E] hover:text-rose-600"
+                          title="Убрать из списка покупок (сократить норму)"
+                        >
+                          <Icon name="trash" className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ==================================================================== */}
+          {/* 3. ВКЛАДКА ВИШЛИСТ                                                   */}
+          {/* ==================================================================== */}
+          {activeTab === "wishlists" && (
+            <div className="space-y-3.5">
+              {/* Верхний блок: комментарий (адрес доставки / пожелания) + кнопка поделиться */}
+              <div className="widget-card p-4 space-y-2.5">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-semibold text-[#1C1C1A]">Комментарий для друзей (адрес доставки / пожелание)</span>
+                  <button
+                    onClick={shareGuestWishlistLink}
+                    className="px-3.5 py-2 rounded-full yellow-bright text-xs font-semibold flex items-center gap-1.5 shrink-0"
+                  >
+                    <Icon name="share" className="w-3.5 h-3.5" />
+                    <span>Ссылка для друзей</span>
+                  </button>
+                </div>
+                <textarea
+                  rows="2"
+                  value={data.wishlistNote || ""}
+                  onChange={(e) => persistData(p => ({ ...p, wishlistNote: e.target.value }))}
+                  placeholder="Например: Адрес доставки или пожелания по цветам и материалам (видно по ссылке)..."
+                  className="w-full px-3 py-2.5 bg-white rounded-2xl text-xs focus:outline-none"
+                />
+              </div>
+
+              {/* Быстрое добавление подарка */}
+              <form onSubmit={addWishlistItem} className="widget-card p-3 rounded-[24px] flex gap-2">
+                <input
+                  type="text"
+                  value={newWishName}
+                  onChange={(e) => setNewWishName(e.target.value)}
+                  placeholder="Добавить вариант подарка..."
+                  className="uniform-input flex-1"
+                />
+                <input
+                  type="text"
+                  value={newWishPrice}
+                  onChange={(e) => setNewWishPrice(e.target.value)}
+                  placeholder="CHF"
+                  className="uniform-input !w-20"
+                />
+                <button type="submit" className="w-[42px] h-[42px] yellow-bright rounded-2xl text-sm font-semibold shrink-0">
+                  +
+                </button>
+              </form>
+
+              {/* Единый общий список подарков (нажмите на карточку для редактирования цены, магазина, ссылки и комментария) */}
+              <div className="space-y-2.5">
+                {allWishlistItems.map(it => {
+                  const isReserved = it.status === "Забронировано" || it.status === "Подарено";
+                  const isExpanded = expandedWishId === it.id;
+                  const linkHref = it.link && it.link.trim()
+                    ? (it.link.trim().startsWith("http") ? it.link.trim() : "https://" + it.link.trim())
+                    : "";
+
+                  return (
+                    <div key={it.id} className={`widget-card-white p-4 transition ${isReserved ? "opacity-55" : "opacity-100"}`}>
+                      <div className="flex items-start justify-between gap-3">
+                        <div
+                          onClick={() => setExpandedWishId(isExpanded ? null : it.id)}
+                          className="min-w-0 flex-1 cursor-pointer"
+                        >
+                          <div className="text-[11px] text-[#75756E] mb-0.5">
+                            {[it.price || "Подарок", it.shop].filter(Boolean).join(" • ")}
+                            {it.reservedBy ? ` • Забронировал(а): ${it.reservedBy}` : ""}
+                          </div>
+                          <h4 className="text-sm font-medium">{it.name}</h4>
+                          {!isExpanded && it.notes && <p className="text-xs text-[#75756E] mt-0.5">{it.notes}</p>}
+                          {!isExpanded && linkHref && (
+                            <a
+                              href={linkHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center gap-1 text-xs font-medium underline mt-1 text-[#1C1C1A]"
+                            >
+                              <Icon name="link" className="w-3.5 h-3.5" />
+                              <span>Открыть ссылку</span>
+                            </a>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0">
+                          {!isReserved ? (
+                            <button
+                              onClick={() => reserveWishlistItem(it._wlId, it.id, "Семья")}
+                              className="px-3 py-1.5 rounded-full yellow-soft text-[11px] font-medium"
+                            >
+                              Свободно
+                            </button>
+                          ) : (
+                            <span className="px-3 py-1.5 rounded-full bg-[#EAEAE3] text-[#5C5C56] text-[11px] font-medium">
+                              {it.status}
+                            </span>
+                          )}
+
+                          <button
+                            onClick={() => deleteWishlistItemOwner(it._wlId, it)}
+                            className="p-1.5 text-[#75756E] hover:text-rose-600"
+                            title="Удалить"
+                          >
+                            <Icon name="trash" className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {isExpanded && (
+                        <div className="mt-3.5 pt-3.5 space-y-2.5 text-xs">
+                          <div>
+                            <label className="block text-[10px] text-[#75756E] mb-1">Название подарка</label>
+                            <input
+                              type="text"
+                              value={it.name}
+                              onChange={(e) => updateWishlistItemField(it._wlId, it.id, "name", e.target.value)}
+                              className="uniform-input !bg-[#F4F4F0] font-medium"
+                            />
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-2">
+                            <div className="min-w-0">
+                              <label className="block text-[10px] text-[#75756E] mb-1">Цена</label>
+                              <input
+                                type="text"
+                                value={it.price || ""}
+                                onChange={(e) => updateWishlistItemField(it._wlId, it.id, "price", e.target.value)}
+                                placeholder="Например: 85 CHF"
+                                className="uniform-input !bg-[#F4F4F0]"
+                              />
+                            </div>
+                            <div className="min-w-0">
+                              <label className="block text-[10px] text-[#75756E] mb-1">Магазин</label>
+                              <input
+                                type="text"
+                                value={it.shop || ""}
+                                onChange={(e) => updateWishlistItemField(it._wlId, it.id, "shop", e.target.value)}
+                                placeholder="IKEA, Galaxus, Zara..."
+                                className="uniform-input !bg-[#F4F4F0]"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="block text-[10px] text-[#75756E] mb-1">Ссылка на товар</label>
+                            <input
+                              type="text"
+                              value={it.link || ""}
+                              onChange={(e) => updateWishlistItemField(it._wlId, it.id, "link", e.target.value)}
+                              placeholder="https://..."
+                              className="uniform-input !bg-[#F4F4F0]"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-[10px] text-[#75756E] mb-1">Комментарий (цвет, размер, пожелание)</label>
+                            <textarea
+                              rows="2"
+                              value={it.notes || ""}
+                              onChange={(e) => updateWishlistItemField(it._wlId, it.id, "notes", e.target.value)}
+                              placeholder="Добавить комментарий..."
+                              className="w-full px-3 py-2 bg-[#F4F4F0] rounded-2xl text-xs focus:outline-none"
+                            />
+                          </div>
+
+                          <div className="flex justify-end">
+                            <button
+                              onClick={() => deleteWishlistItemOwner(it._wlId, it)}
+                              className="px-3 py-1.5 rounded-full text-rose-600 flex items-center gap-1"
+                            >
+                              <Icon name="trash" className="w-3.5 h-3.5" />
+                              <span>Удалить подарок</span>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* ==================================================================== */}
+          {/* 4. ВКЛАДКА СЕМЬЯ                                                     */}
+          {/* ==================================================================== */}
+          {activeTab === "profile" && (
+            <div className="space-y-4">
+              {/* Медицинская карточка мамы (плоский мягкий желтый фон без градиента и обводки) */}
+              <div className="yellow-soft rounded-[26px] p-4 space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div>
+                    <div className="text-sm font-semibold">
+                      {medLangEn ? "Mother's Medical Card (For Hospital)" : "Медицинская информация о маме"}
+                    </div>
+                    <div className="text-[11px] text-[#5C5C56]">
+                      {medLangEn ? "Emergency & admission summary" : "Сводка для приёмного отделения роддома"}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setMedLangEn(v => !v)}
+                    className="px-3 py-1.5 rounded-full bg-white text-[#1C1C1A] text-xs font-medium flex items-center gap-1.5 shrink-0"
+                  >
+                    <Icon name="globe" className="w-3.5 h-3.5" />
+                    <span>{medLangEn ? "На русском" : "Translate to EN"}</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2.5 text-xs">
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#5C5C56] mb-1">
+                      {medLangEn ? "Gestation week" : "Неделя беременности"}
+                    </label>
+                    <input
+                      type="text"
+                      value={medLangEn ? translateMedicalTextToEn(med.gestationWeek) : (med.gestationWeek || "")}
+                      readOnly={medLangEn}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, medicalCard: { ...p.profile.medicalCard, gestationWeek: e.target.value } } }))}
+                      placeholder="36"
+                      className="uniform-input"
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#5C5C56] mb-1">
+                      {medLangEn ? "Blood type & Rh" : "Группа крови и резус"}
+                    </label>
+                    <input
+                      type="text"
+                      value={medLangEn ? translateMedicalTextToEn(med.bloodType) : (med.bloodType || "")}
+                      readOnly={medLangEn}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, medicalCard: { ...p.profile.medicalCard, bloodType: e.target.value } } }))}
+                      placeholder="A (II) Rh+"
+                      className="uniform-input"
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#5C5C56] mb-1">
+                      {medLangEn ? "Allergies" : "Аллергии"}
+                    </label>
+                    <input
+                      type="text"
+                      value={medLangEn ? translateMedicalTextToEn(med.allergies) : (med.allergies || "")}
+                      readOnly={medLangEn}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, medicalCard: { ...p.profile.medicalCard, allergies: e.target.value } } }))}
+                      placeholder="Нет / лекарства"
+                      className="uniform-input"
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#5C5C56] mb-1">
+                      {medLangEn ? "Insurance / Policy" : "Страховая / полис"}
+                    </label>
+                    <input
+                      type="text"
+                      value={medLangEn ? translateMedicalTextToEn(med.insuranceNumber) : (med.insuranceNumber || "")}
+                      readOnly={medLangEn}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, medicalCard: { ...p.profile.medicalCard, insuranceNumber: e.target.value } } }))}
+                      placeholder="Helsana №..."
+                      className="uniform-input"
+                    />
+                  </div>
+
+                  <div className="col-span-2 min-w-0">
+                    <label className="block text-[11px] text-[#5C5C56] mb-1">
+                      {medLangEn ? "Medications & vitamins" : "Принимаемые препараты и витамины"}
+                    </label>
+                    <input
+                      type="text"
+                      value={medLangEn ? translateMedicalTextToEn(med.medications) : (med.medications || "")}
+                      readOnly={medLangEn}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, medicalCard: { ...p.profile.medicalCard, medications: e.target.value } } }))}
+                      placeholder="Железо, витамины..."
+                      className="uniform-input"
+                    />
+                  </div>
+
+                  <div className="col-span-2 min-w-0">
+                    <label className="block text-[11px] text-[#5C5C56] mb-1">
+                      {medLangEn ? "Chronic conditions / Delivery notes" : "Особенности течения беременности / пожелания"}
+                    </label>
+                    <input
+                      type="text"
+                      value={medLangEn ? translateMedicalTextToEn(med.deliveryNotes) : (med.deliveryNotes || "")}
+                      readOnly={medLangEn}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, medicalCard: { ...p.profile.medicalCard, deliveryNotes: e.target.value } } }))}
+                      placeholder="Без особенностей..."
+                      className="uniform-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Срочные контакты */}
+              <div className="widget-card p-4 space-y-3 text-xs">
+                <div className="text-sm font-semibold">Срочные контакты (отображаются вверху)</div>
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Телефон мамы</label>
+                    <input
+                      type="tel"
+                      value={urgent.momPhone || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, urgentContacts: { ...p.profile.urgentContacts, momPhone: e.target.value } } }))}
+                      placeholder="+41 79..."
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Телефон папы</label>
+                    <input
+                      type="tel"
+                      value={urgent.dadPhone || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, urgentContacts: { ...p.profile.urgentContacts, dadPhone: e.target.value } } }))}
+                      placeholder="+41 79..."
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Телефон роддома</label>
+                    <input
+                      type="tel"
+                      value={urgent.hospitalPhone || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, urgentContacts: { ...p.profile.urgentContacts, hospitalPhone: e.target.value } } }))}
+                      placeholder="+41 44..."
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Адрес роддома</label>
+                    <input
+                      type="text"
+                      value={urgent.hospitalAddress || ""}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, urgentContacts: { ...p.profile.urgentContacts, hospitalAddress: e.target.value } } }))}
+                      placeholder="Улица, дом, город"
+                      className="uniform-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Данные семьи и ПДР */}
+              <div className="widget-card p-4 space-y-3 text-xs">
+                <div className="text-sm font-semibold">Данные семьи и ПДР</div>
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Мама</label>
+                    <input
+                      type="text"
+                      value={data.profile.momName}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, momName: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Папа</label>
+                    <input
+                      type="text"
+                      value={data.profile.partnerName}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, partnerName: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Имя малыша</label>
+                    <input
+                      type="text"
+                      value={data.profile.babyName}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, babyName: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">ПДР</label>
+                    <input
+                      type="date"
+                      value={data.profile.dueDate}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, dueDate: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Страна</label>
+                    <input
+                      type="text"
+                      value={data.profile.country}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, country: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Город</label>
+                    <input
+                      type="text"
+                      value={data.profile.city}
+                      onChange={(e) => persistData(p => ({ ...p, profile: { ...p.profile, city: e.target.value } }))}
+                      className="uniform-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Аккаунты семей */}
+              <div className="widget-card-white p-4 space-y-3 text-xs">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-sm font-semibold">Аккаунты семей</span>
+                  <button
+                    onClick={() => setShowNewFamilyModal(true)}
+                    className="px-3 py-1.5 rounded-full yellow-soft text-xs font-medium"
+                  >
+                    + Начать с нуля (тест)
+                  </button>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {familiesIndex.map(fam => (
+                    <button
+                      key={fam.id}
+                      onClick={() => switchFamilyAccount(fam.id)}
+                      className={`px-3.5 py-2 rounded-full text-xs transition ${
+                        fam.id === currentFamilyId ? "yellow-soft font-semibold" : "bg-[#EAEAE3] text-[#5C5C56]"
+                      }`}
+                    >
+                      {fam.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* МОДАЛКА «КОД СЕМЬИ И СИНХРОНИЗАЦИЯ» (открывается по кнопке «Код» в шапке) */}
+          {showCodeModal && (
+            <div className="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-4">
+              <div className="bg-[#F4F4F0] w-full max-w-md rounded-[28px] p-5 space-y-3.5 shadow-xl text-xs">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium">Облако и код семьи (1 сек)</h3>
+                  <button type="button" onClick={() => setShowCodeModal(false)}><Icon name="x" className="w-5 h-5" /></button>
+                </div>
+
+                <div className="widget-card-white p-3.5 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-[#1C1C1A]">1. Ваша база Firebase</span>
+                    <span className="text-[11px] flex items-center gap-1.5">
+                      <span style={{ backgroundColor: syncDotColor }} className="w-2 h-2 rounded-full" />
+                      <span>{syncStatus === "synced" ? `Онлайн ${lastSyncTime}` : syncStatus === "syncing" ? "Синхр..." : "Не подключено"}</span>
+                    </span>
+                  </div>
+                  <div className="flex gap-2">
+                    <input
+                      type="url"
+                      value={fbUrlInput}
+                      onChange={(e) => setFbUrlInput(e.target.value)}
+                      placeholder="https://...firebasedatabase.app"
+                      className="uniform-input !bg-[#F4F4F0] flex-1"
+                    />
+                    <button onClick={saveFirebaseUrl} className="px-3.5 h-[42px] yellow-bright rounded-2xl text-xs font-semibold shrink-0">
+                      Подключить
+                    </button>
+                  </div>
+                </div>
+
+                <div className="widget-card-white p-3.5 space-y-2">
+                  <div className="text-[#75756E]">2. Ваш код семьи:</div>
+                  <div className="flex items-center justify-between gap-2 bg-[#F4F4F0] px-3 py-2.5 rounded-2xl">
+                    <code className="text-xs font-bold text-[#1C1C1A] break-all">{roomId}</code>
+                    <button
+                      onClick={() => { navigator.clipboard?.writeText(roomId); notify("Код семьи скопирован!"); }}
+                      className="px-3 py-1.5 rounded-full yellow-soft text-[11px] font-semibold shrink-0"
+                    >
+                      Копировать
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="text-[#75756E]">3. Подключить второе устройство (вставьте ссылку из «Поделиться» или код):</div>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={joinInput}
+                      onChange={(e) => setJoinInput(e.target.value)}
+                      placeholder="Вставьте ссылку или код..."
+                      className="uniform-input flex-1"
+                    />
+                    <button onClick={connectToRoom} className="px-4 h-[42px] bg-[#1C1C1A] text-white rounded-2xl text-xs font-medium shrink-0">
+                      Войти
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* МОДАЛКА СОЗДАНИЯ НОВОГО СПИСКА */}
+          {showAddListModal && (
+            <div className="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-4">
+              <form onSubmit={handleAddNewList} className="bg-[#F4F4F0] w-full max-w-md rounded-[28px] p-5 space-y-3 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium">Новый список</h3>
+                  <button type="button" onClick={() => setShowAddListModal(false)}><Icon name="x" className="w-5 h-5" /></button>
+                </div>
+                <input
+                  type="text"
+                  required
+                  autoFocus
+                  value={newListName}
+                  onChange={(e) => setNewListName(e.target.value)}
+                  placeholder="Например: Прогулки / Аптечка / Игрушки..."
+                  className="uniform-input"
+                />
+                <button type="submit" className="w-full py-3 yellow-bright rounded-2xl text-xs font-semibold">
+                  Создать список
+                </button>
+              </form>
+            </div>
+          )}
+
+          {/* МОДАЛКА ДОБАВЛЕНИЯ В СПИСОК */}
+          {showAddModal && (
+            <div className="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-4">
+              <form onSubmit={handleAddChecklistItem} className="bg-[#F4F4F0] w-full max-w-md rounded-[28px] p-5 space-y-3 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium">Новая задача / покупка</h3>
+                  <button type="button" onClick={() => setShowAddModal(false)}><Icon name="x" className="w-5 h-5" /></button>
+                </div>
+                <select
+                  value={newItem.section}
+                  onChange={(e) => setNewItem({ ...newItem, section: e.target.value })}
+                  className="uniform-input"
+                >
+                  {allSectionTiles.filter(s => s.id !== "Все").map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
+                </select>
+                <input
+                  type="text"
+                  required
+                  value={newItem.name}
+                  onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                  placeholder="Название..."
+                  className="uniform-input"
+                />
+                <div className="grid grid-cols-2 gap-2">
+                  <select
+                    value={newItem.importance}
+                    onChange={(e) => setNewItem({ ...newItem, importance: e.target.value })}
+                    className="uniform-input"
+                  >
+                    {PRIORITIES.map(p => <option key={p} value={p}>{p}</option>)}
+                  </select>
+                  <input
+                    type="text"
+                    value={newItem.who}
+                    onChange={(e) => setNewItem({ ...newItem, who: e.target.value })}
+                    placeholder="Кто"
+                    className="uniform-input"
+                  />
+                </div>
+                <input
+                  type="text"
+                  value={newItem.notes}
+                  onChange={(e) => setNewItem({ ...newItem, notes: e.target.value })}
+                  placeholder="Комментарий..."
+                  className="uniform-input"
+                />
+                <button type="submit" className="w-full py-3 yellow-bright rounded-2xl text-xs font-semibold">
+                  Сохранить
+                </button>
+              </form>
+            </div>
+          )}
+
+          {/* МОДАЛКА ДОБАВЛЕНИЯ КАТЕГОРИИ В ГАРДЕРОБ */}
+          {showAddWardrobeModal && (
+            <div className="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-4">
+              <form onSubmit={handleAddWardrobeCategory} className="bg-[#F4F4F0] w-full max-w-md rounded-[28px] p-5 space-y-3 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium">Новая категория одежды</h3>
+                  <button type="button" onClick={() => setShowAddWardrobeModal(false)}><Icon name="x" className="w-5 h-5" /></button>
+                </div>
+                <input
+                  type="text"
+                  required
+                  value={newWardrobeName}
+                  onChange={(e) => setNewWardrobeName(e.target.value)}
+                  placeholder="Например: Песочники / Муслиновые боди..."
+                  className="uniform-input"
+                />
+                <select
+                  value={newWardrobeSeason}
+                  onChange={(e) => setNewWardrobeSeason(e.target.value)}
+                  className="uniform-input"
+                >
+                  <option value="all">Всесезонная одежда (нужна круглый год)</option>
+                  <option value="cold">Только для холодного сезона (не нужна летом)</option>
+                  <option value="warm">Только для тёплого сезона (не нужна зимой)</option>
+                </select>
+                <button type="submit" className="w-full py-3 yellow-bright rounded-2xl text-xs font-semibold">
+                  Добавить в таблицу
+                </button>
+              </form>
+            </div>
+          )}
+
+          {/* МОДАЛКА «НАЧАТЬ С НУЛЯ (ТЕСТ)» */}
+          {showNewFamilyModal && (
+            <div className="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-4">
+              <form onSubmit={createFreshFamilyAccount} className="bg-[#F4F4F0] w-full max-w-md rounded-[28px] p-5 space-y-3 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium">Начать с нуля (тест)</h3>
+                  <button type="button" onClick={() => setShowNewFamilyModal(false)}><Icon name="x" className="w-5 h-5" /></button>
+                </div>
+                <p className="text-xs text-[#75756E] leading-relaxed">
+                  Ответьте на 5 вопросов — приложение определит сезон и климат, соберёт стартовую базу документов, гардероба и вещей на выписку.
+                </p>
+
+                <div className="grid grid-cols-2 gap-2.5 text-xs">
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Имя мамы *</label>
+                    <input
+                      type="text"
+                      required
+                      value={newFamForm.momName}
+                      onChange={(e) => setNewFamForm({ ...newFamForm, momName: e.target.value })}
+                      placeholder="Анна"
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">ПДР *</label>
+                    <input
+                      type="date"
+                      required
+                      value={newFamForm.dueDate}
+                      onChange={(e) => setNewFamForm({ ...newFamForm, dueDate: e.target.value })}
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Страна *</label>
+                    <input
+                      type="text"
+                      required
+                      value={newFamForm.country}
+                      onChange={(e) => setNewFamForm({ ...newFamForm, country: e.target.value })}
+                      placeholder="Швейцария"
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Город *</label>
+                    <input
+                      type="text"
+                      required
+                      value={newFamForm.city}
+                      onChange={(e) => setNewFamForm({ ...newFamForm, city: e.target.value })}
+                      placeholder="Цюрих"
+                      className="uniform-input"
+                    />
+                  </div>
+                  <div className="col-span-2 min-w-0">
+                    <label className="block text-[11px] text-[#75756E] mb-1">Рост мамы (см) *</label>
+                    <input
+                      type="number"
+                      required
+                      min="140"
+                      max="205"
+                      value={newFamForm.momHeightCm}
+                      onChange={(e) => setNewFamForm({ ...newFamForm, momHeightCm: e.target.value })}
+                      placeholder="168"
+                      className="uniform-input"
+                    />
+                  </div>
+                </div>
+
+                <button type="submit" className="w-full py-3 yellow-bright rounded-2xl text-xs font-semibold">
+                  Сформировать персональную базу
+                </button>
+              </form>
+            </div>
+          )}
+
+          {/* Светлая нижняя навигация без обводки */}
+          <nav className="fixed bottom-4 inset-x-4 max-w-md mx-auto nav-pill-light rounded-full p-1.5 z-40">
+            <div className="grid grid-cols-4 gap-1">
+              {[
+                { id: "checklist", label: "Списки", icon: "checkCircle" },
+                { id: "wardrobe", label: "Гардероб", icon: "shirt" },
+                { id: "wishlists", label: "Вишлист", icon: "gift" },
+                { id: "profile", label: "Семья", icon: "user" }
+              ].map(tab => {
+                const active = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex flex-col items-center justify-center py-2 rounded-full transition ${
+                      active ? "yellow-bright font-semibold" : "text-[#75756E]"
+                    }`}
+                  >
+                    <Icon name={tab.icon} className="w-4 h-4 mb-0.5" />
+                    <span className="text-[10px]">{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
